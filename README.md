@@ -1,8 +1,3 @@
-# web-dev-template
+Web Dev Repo for NEU CS5610 
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+I'm a research tech who's currently enrolled in NEU's Bioinformatics MS program. Luckily enough I do have a little bit of a coding experience from my undergrad years and work, but my HTML/CSS knowledge is very outdated. This repository will mostly serve as the place where my CS5610 assignments go but I do have a website and building an app for my website will be my major project. 
