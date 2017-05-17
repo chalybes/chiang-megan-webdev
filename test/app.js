@@ -4,15 +4,24 @@ module.exports = function(app)
     app.post("/api/test", createMessage);
     app.delete("/api/test/:id", deleteMessage);
 
-    var connectionString = 'mongodb://127.0.0.1:27017/test';
+    //var connectionString = 'mongodb://127.0.0.1:27017/test';
 
-    if(process.env.MLAB_USERNAME) {
-        connectionString = process.env.MLAB_USERNAME + ":" +
-            process.env.MLAB_PASSWORD + "@" +
-            process.env.MLAB_HOST + ':' +
-            process.env.MLAB_PORT + '/' +
-            process.env.MLAB_APP_NAME;
-    }
+    //if(process.env.MLAB_USERNAME) {
+        //connectionString = process.env.MLAB_USERNAME + ":" +
+            //process.env.MLAB_PASSWORD + "@" +
+            //process.env.MLAB_HOST + ':' +
+            //process.env.MLAB_PORT + '/' +
+            //process.env.MLAB_APP_NAME;
+    //}
+    var connectionString = 'mongodb://127.0.0.1:27017/test'; // for local
+
+    if(process.env.MLAB_USER) { // check if running remotely
+        var username = process.env.MLAB_USER; // get from environment
+        var password = process.env.MLAB_PASS;
+        connectionString = 'mongodb://' + username + ':' + password;
+        connectionString += '@ds161487.mlab.com:61487/heroku_hlfpq3hf'; // user yours
+     }
+
 
     var mongoose = require("mongoose");
     mongoose.connect(connectionString);
