@@ -2,6 +2,18 @@ input.form-control {
     margin-bottom: 5px;
 }
 
+/*.fixed-panel {*/
+    /*height: 300px;*/
+/*}*/
+
+li.borderless {
+    border: none;
+}
+
+.glyphicon-menu-left:before {
+    margin-right: 10px;
+}
+
 body {
     padding-top: 36px;
     margin: 20px;
