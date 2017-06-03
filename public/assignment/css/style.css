@@ -22,3 +22,7 @@ body {
     padding-top: 36px;
     margin: 20px;
 }
+
+h3 {
+    font-weight: bold;
+}
