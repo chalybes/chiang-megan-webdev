@@ -18,6 +18,11 @@ li.borderless {
     color: #ffffff;
 }
 
+.glyphicon-plus.newpagecustom, .glyphicon-cog.newpagecustom, .glyphicon-ok.newpagecustom {
+    color: #5a5959;
+}
+
+
 body {
     padding-top: 36px;
     margin: 20px;
@@ -25,4 +30,14 @@ body {
 
 h3 {
     font-weight: bold;
+}
+
+.panel {
+    border-color: #cdcdcd;
+}
+
+.panel-heading.customhead {
+    background: #eae9e8;
+    color: #5a5959;
+    border: #cdcdcd;
 }
