@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
+    <link href="/assignment/css/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <p class="navbar-text"><a href="widget-list.html"><span class="pull-left glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>Widget Edit (Heading)</p>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="widget-chooser.html"><span class="glyphicon glyphicon-ok newpagecustom"></span></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <label for="name">Name</label>
+    <input class="form-control"
+           placeholder="facebook"
+           value="top heading"
+           id="name"/>
+
+    <label for="text">Text</label>
+    <input class="form-control"
+           placeholder="facebook"
+           value="US Senate Reaches Compromise"
+           id="text"/>
+
+    <label for="size">Size</label>
+    <select id="size" class="form-control">
+        <option>1 (X-Large)</option>
+        <option>2 (Larger)</option>
+        <option>3 (Large)</option>
+        <option>4 (Medium)</option>
+        <option>5 (Small)</option>
+        <option>6 (Smallest)</option>
+    </select>
+
+    <br>
+
+    <a href="widget-list.html" class="btn btn-block btn-danger">Delete</a>
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span></a></li>
+        </ul>
+    </div>
+</nav>
 
 </body>
 </html>
