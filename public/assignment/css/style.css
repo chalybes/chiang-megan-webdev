@@ -15,7 +15,7 @@ li.borderless {
     border: none;
 }
 
-.glyphicon-menu-left:before {
+.glyphicon-chevron-left:before {
     margin-right: 10px;
 }
 
@@ -23,7 +23,7 @@ li.borderless {
     color: #ffffff;
 }
 
-.glyphicon-plus.newpagecustom, .glyphicon-cog.newpagecustom, .glyphicon-ok.newpagecustom {
+.glyphicon-plus.newpagecustom, .glyphicon-cog.newpagecustom, .glyphicon-ok.newpagecustom, .glyphicon-chevron-left.newpagecustom {
     color: #5a5959;
 }
 
