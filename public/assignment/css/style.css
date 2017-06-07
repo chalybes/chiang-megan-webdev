@@ -46,3 +46,10 @@ h3 {
     color: #5a5959;
     border: #cdcdcd;
 }
+
+@media (orientation:landscape) {
+
+    .hide-on-portrait {
+        display: none;
+    }
+}
