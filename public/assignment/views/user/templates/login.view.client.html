@@ -14,8 +14,8 @@
     <div class="container-fluid">
         <h1>Login</h1>
 
-        <div ng-show="message" class="alert alert-danger">
-            {{message}}
+        <div ng-show="vm.message" class="alert alert-danger">
+            {{vm.message}}
         </div>
 
         <label for="username">Username</label>
@@ -24,9 +24,9 @@
         <label>Password</label>
         <input ng-model="password" class="form-control" placeholder="password"/>
 
-        <a ng-click="login(username, password)" class="btn btn-primary btn-block">Login</a>
+        <a ng-click="vm.login(username, password)" class="btn btn-primary btn-block">Login</a>
         <a class="btn btn-success btn-block"
-           href="register.view.client.html">Register</a>
+           href="#!/register">Register</a>
     </div>
 <!--</body>-->
 <!--</html>-->

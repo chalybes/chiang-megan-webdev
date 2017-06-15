@@ -13,10 +13,13 @@
             })
             .when('/login', {
                 templateUrl: 'views/user/templates/login.view.client.html',
-                controller: 'loginController'
+                controller: 'loginController',
+                controllerAs: 'vm'
             })
-            .when('/profile', {
-                templateUrl: 'views/user/templates/profile.view.client.html'
+            .when('/profile/:userId', {
+                templateUrl: 'views/user/templates/profile.view.client.html',
+                controller: 'profileController',
+                controllerAs: 'model'
             });
     }
 
