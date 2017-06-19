@@ -58,9 +58,16 @@
         }
 
         function findUserByUsername(username) {
-            return users.find(function (user) {
-                return user.username === username
+            var user =  users.find(function (user) {
+                return user.username === username;
             });
+
+            if (typeof user === 'undefined') {
+                return null;
+            } else {
+                return user;
+            }
+
         }
 
 
