@@ -35,7 +35,11 @@
         }
 
         function updateWebsite(websiteId, website) {
+            var websitedit = websites.find(function (website) {
+                return website._id === websiteId;
+            })
 
+            websitedit = website;
         }
 
         function deleteWebsite(websiteId) {
