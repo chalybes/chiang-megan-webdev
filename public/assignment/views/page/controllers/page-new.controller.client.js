@@ -19,7 +19,7 @@
         function createPage(websiteId, page) {
             websiteId = model.websiteId;
             pageService.createPage(websiteId, page);
-            $location.url('/user/' + model.websiteId + '/page');
+            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/');
         }
 
     }
