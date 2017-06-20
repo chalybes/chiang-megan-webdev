@@ -37,6 +37,11 @@
                 templateUrl: 'views/website/templates/website-edit.view.client.html',
                 controller: 'websiteEditController',
                 controllerAs: 'model'
+            })
+            .when('/user/:userId/website/:websiteId/page', {
+                templateUrl: 'views/page/templates/page-list.view.client.html',
+                controller: 'pageListController',
+                controllerAs: 'model'
             });
     }
 
