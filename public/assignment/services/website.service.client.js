@@ -51,8 +51,8 @@
 
             for (var w in websites) {
                 if (websites[w].developerId === userId) {
-                    websites[w].created = new Date();
-                    websites[w].updated = new Date();
+                    // websites[w].created = new Date();
+                    // websites[w].updated = new Date();
                     resultSet.push(websites[w]);
                 }
             }
