@@ -9,6 +9,7 @@
         var userId = $routeParams['userId'];
 
         model.user = userService.findUserById(userId);
+        model.userId = $routeParams['userId'];
 
     }
 
