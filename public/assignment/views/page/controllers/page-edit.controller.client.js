@@ -7,6 +7,7 @@
 
         var model = this;
 
+        model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
         model.createPage = createPage;
@@ -23,17 +24,17 @@
         function createPage(page) {
             page.websiteId = model.websiteId;
             pageService.createPage(page);
-            $location.url('/user/' + model.websiteId + '/page');
+            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
         }
 
         function updatePage(page, pageId) {
-            pageService.updatePage(website, websiteId);
-            $location.url('/user/' + model.websiteId + '/page');
+            pageService.updatePage(page, pageId);
+            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
         }
 
         function deletePage(pageId) {
             pageService.deletePage(pageId);
-            $location.url('/user/' + model.websiteId + '/page');
+            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
         }
 
     }

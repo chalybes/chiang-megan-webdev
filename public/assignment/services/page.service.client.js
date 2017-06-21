@@ -42,13 +42,20 @@
         }
 
         function findPageByWebsiteId(websiteId) {
-            return pages.find(function (website) {
-                return website._id === websiteId;
-            });
+
+            var results = [];
+
+            for (var p in pages) {
+                if (pages[p].websiteId === websiteId) {
+                    results.push(pages[p]);
+                }
+            }
+
+            return results;
         }
 
         function findPageById(pageId) {
-            return pages.find(function (pageId) {
+            return pages.find(function (page) {
                 return page._id === pageId;
             });
         }
