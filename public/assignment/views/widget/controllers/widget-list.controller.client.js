@@ -3,7 +3,7 @@
         .module('WAM')
         .controller('widgetListController', widgetListController);
 
-    function widgetListController($sce) {
+    function widgetListController($sce, $routeParams) {
 
         var model = this;
 
@@ -15,6 +15,9 @@
                        { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%", "url": "https://youtu.be/AM2Ivdi9c4E" },
                        { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}];
 
+        model.userId = $routeParams['userId'];
+        model.websiteId = $routeParams['websiteId'];
+        model.pageId = $routeParams['pageId'];
         model.widgets = widgets;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.trustThisContent = trustThisContent;

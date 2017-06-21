@@ -2,7 +2,7 @@
     <div class="container-fluid">
        <p class="navbar-text"><a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/"><span class="pull-left glyphicon glyphicon-chevron-left newpagecustom" aria-hidden="true"></span></a>Widgets</p>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="../widget-chooser.html"><span class="glyphicon glyphicon-plus newpagecustom"></span></a></li>
+            <li><a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new"><span class="glyphicon glyphicon-plus newpagecustom"></span></a></li>
         </ul>
     </div>
 </nav>
@@ -20,31 +20,9 @@
 
                 <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
 
-                <!--<div ng-switch="widget.widgetType">-->
-
-                    <!--<div ng-switch-when="HEADING">-->
-                        <!--<div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>-->
-                    <!--</div>-->
-                    <!--<div ng-switch-when="IMAGE">-->
-                        <!--<div ng-include="'views/widget/templates/widget-image.view.client.html'"></div>-->
-                    <!--</div>-->
-                    <!--<div ng-switch-when="YOUTUBE">-->
-                        <!--<div ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>-->
-                    <!--</div>-->
-                    <!--<div ng-switch-when="HTML" ng-bind-html="model.trustThisContent(widget.text)"></div>-->
-                <!--</div>-->
-
             </div>
         </div>
     </div>
 </div>
 
 <div ng-include="'views/common/footer.view.client.html'"></div>
-
-<!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
-    <!--<div class="container-fluid">-->
-        <!--<ul class="nav navbar-nav navbar-right">-->
-            <!--<li><a href="../user/profile.html"><span class="glyphicon glyphicon-user"></span></a></li>-->
-        <!--</ul>-->
-    <!--</div>-->
-<!--</nav>-->
