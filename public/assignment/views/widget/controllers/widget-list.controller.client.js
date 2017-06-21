@@ -18,6 +18,7 @@
         model.widgets = widgets;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.trustThisContent = trustThisContent;
+        model.getWidgetUrlForType = getWidgetUrlForType;
 
         function trustThisContent(html) {
             //need to scrub before using this function
@@ -29,6 +30,10 @@
             var linkUrlParts = youTubeLink.split('/');
             embedUrl += linkUrlParts[linkUrlParts.length - 1];
             return $sce.trustAsResourceUrl(embedUrl);
+        }
+
+        function getWidgetUrlForType(type) {
+            return 'views/widget/templates/widget-' + type.toLowerCase() + '.view.client.html';
         }
 
     }
