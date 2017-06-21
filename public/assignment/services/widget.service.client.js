@@ -23,8 +23,6 @@
 
         function createWidget(pageId, widget) {
             widget._id = (new Date()).getTime() + "";
-            widget.created = new Date();
-            widget.updated = new Date();
             widget.pageId = pageId;
             widgets.push(widget);
         }

@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                New Widget
+                Edit Widget
             </a>
             <p class="navbar-text pull-right">
                 <a href="#" class="navbar-link">
@@ -93,9 +93,13 @@
                       placeholder="So big it is its own country"
                       class="form-control"></textarea>
 
-            <a ng-click="model.createWidget(model.pageId, model.widget)"
+            <a ng-click="model.updateWidget(model.widgetId, model.widget)"
                class="btn btn-block btn-success">
-                Create
+                Update
+            </a>
+            <a ng-click="model.deleteWidget(model.widgetId)"
+               class="btn btn-block btn-danger">
+                Delete
             </a>
         </div>
     </div>

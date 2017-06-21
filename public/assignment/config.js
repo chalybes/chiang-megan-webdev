@@ -62,6 +62,11 @@
                 templateUrl: 'views/widget/templates/widget-new.view.client.html',
                 controller: 'widgetNewController',
                 controllerAs: 'model'
+            })
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/edit', {
+                templateUrl: 'views/widget/templates/widget-edit.view.client.html',
+                controller: 'widgetEditController',
+                controllerAs: 'model'
             });
     }
 
