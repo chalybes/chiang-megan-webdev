@@ -52,6 +52,11 @@
                 templateUrl: 'views/page/templates/page-edit.view.client.html',
                 controller: 'pageEditController',
                 controllerAs: 'model'
+            })
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget', {
+                templateUrl: 'views/widget/templates/widget-list.view.client.html',
+                controller: 'widgetListController',
+                controllerAs: 'model'
             });
     }
 
