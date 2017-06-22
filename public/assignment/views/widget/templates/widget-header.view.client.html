@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                Edit Widget
+                New Header
             </a>
             <p class="navbar-text pull-right">
                 <a href="#" class="navbar-link">
@@ -16,13 +16,13 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-xs-12 col-sm-8">
+        <div class="col-md-4 col-md-offset-4">
 
             <label for="name">Widget Type</label>
             <input class="form-control"
                    ng-model="model.widget.widgetType"
-                   placeholder="facebook"
-                   id="name"/>
+                   placeholder="Heading"
+                   id="type"/>
 
             <label for="name">Size</label>
             <input class="form-control"
@@ -34,28 +34,24 @@
             <input class="form-control"
                    ng-model="model.widget.width"
                    placeholder="Width"
-                   id="name"/>
+                   id="width"/>
 
             <label for="name">Url</label>
             <input class="form-control"
                    ng-model="model.widget.url"
                    placeholder="URL"
-                   id="name"/>
+                   id="URL"/>
 
-            <label for="description">Text</label>
-            <textarea id="description"
-                      rows="5"
+            <label for="text">Text</label>
+            <textarea id="text"
+                      rows="3"
                       ng-model="model.widget.text"
-                      placeholder="So big it is its own country"
+                      placeholder="Write your text"
                       class="form-control"></textarea>
 
-            <a ng-click="model.updateWidget(model.widgetId, model.widget)"
+            <a ng-click="model.createWidget(pageId, widget)"
                class="btn btn-block btn-success">
-                Update
-            </a>
-            <a ng-click="model.deleteWidget(model.widgetId)"
-               class="btn btn-block btn-danger">
-                Delete
+                Create
             </a>
         </div>
     </div>

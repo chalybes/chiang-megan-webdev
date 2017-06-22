@@ -8,6 +8,7 @@
         var model = this;
 
         model.userId = $routeParams['userId'];
+        model.websiteId = $routeParams['websiteId'];
         model.widgetId = $routeParams['widgetId'];
         model.pageId = $routeParams['pageId'];
         model.createWidget = createWidget;

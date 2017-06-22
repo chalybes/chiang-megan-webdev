@@ -59,7 +59,27 @@
                 controllerAs: 'model'
             })
             .when('/user/:userId/website/:websiteId/page/:pageId/widget/new', {
-                templateUrl: 'views/widget/templates/widget-new.view.client.html',
+                templateUrl: 'views/widget/templates/widget-chooser.view.client.html',
+                controller: 'widgetNewController',
+                controllerAs: 'model'
+            })
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new-header', {
+                templateUrl: 'views/widget/templates/widget-header.view.client.html',
+                controller: 'widgetNewController',
+                controllerAs: 'model'
+            })
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new-image', {
+                templateUrl: 'views/widget/templates/widget-image-editor.view.client.html',
+                controller: 'widgetNewController',
+                controllerAs: 'model'
+            })
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new-html', {
+                templateUrl: 'views/widget/templates/widget-html.view.client.html',
+                controller: 'widgetNewController',
+                controllerAs: 'model'
+            })
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new-youtube', {
+                templateUrl: 'views/widget/templates/widget-new-youtube.view.client.html',
                 controller: 'widgetNewController',
                 controllerAs: 'model'
             })
