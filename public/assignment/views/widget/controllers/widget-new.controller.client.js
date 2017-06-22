@@ -21,6 +21,10 @@
 
         function createWidget(pageId, widget) {
             widget.pageId = model.pageId;
+            widget.widgetType = model.widget.widgetType;
+            widget.size = model.widget.size;
+            widget.width = model.widget.width;
+            widget.url = model.widget.url;
             widgetService.createWidget(pageId, widget);
             $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
         }

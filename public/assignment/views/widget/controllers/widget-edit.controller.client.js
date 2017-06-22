@@ -8,16 +8,17 @@
         var model = this;
 
         model.userId = $routeParams['userId'];
-        // model.websiteId = $routeParams['websiteId'];
-        model.widgetId = $routeParams['widgetId'];
+        model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
+        model.widgetId = $routeParams['widgetId'];
+        // model.widgetId = model.widget._id;
         model.createWidget = createWidget;
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
 
         function init() {
             model.widgets = widgetService.findWidgetsByPageId(model.pageId);
-            model.widget = widgetService.findWidgetsById(model.widgetId);
+            model.widget = widgetService.findWidgetById(model.widgetId);
         }
 
         init();

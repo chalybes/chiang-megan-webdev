@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
 
-            <label for="name">Widget Type</label>
+            <label for="type">Widget Type</label>
             <input class="form-control"
                    ng-model="model.widget.widgetType"
                    placeholder="HEADING"
@@ -37,7 +37,7 @@
                       placeholder="Write your text"
                       class="form-control"></textarea>
 
-            <a ng-click="createWidget(pageId, widget)"
+            <a ng-click="model.createWidget(model.pageId, model.widget)"
                class="btn btn-block btn-success">
                 Create
             </a>
@@ -45,13 +45,4 @@
     </div>
 </div>
 
-<nav role="navigation" class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <!-- Collection of nav links and other content for toggling -->
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#!/user/userId/"><span class="glyphicon glyphicon-user"></span></a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div ng-include="'views/common/footer.view.client.html'"></div>
