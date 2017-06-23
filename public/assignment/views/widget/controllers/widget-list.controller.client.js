@@ -10,7 +10,6 @@
         model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
-        model.widgetId = $routeParams['widgetId'];
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.trustThisContent = trustThisContent;
         model.getWidgetUrlForType = getWidgetUrlForType;

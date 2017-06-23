@@ -11,7 +11,6 @@
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
         model.widgetId = $routeParams['widgetId'];
-        // model.widgetId = model.widget._id;
         model.createWidget = createWidget;
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
