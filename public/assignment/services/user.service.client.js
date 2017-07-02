@@ -3,7 +3,7 @@
         .module('WAM')
         .factory('userService', userService);
 
-    function userService() {
+    function userService($http) {
 
         var users = [
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -35,9 +35,14 @@
         }
 
         function findUserById(userId) {
-            return users.find(function (user) {
-                return user._id === userId;
-            });
+
+            var url = "/api/user/" + userId;
+
+            $http.get(url);
+
+            // return users.find(function (user) {
+            //     return user._id === userId;
+            // });
         }
 
         function createUser(user) {

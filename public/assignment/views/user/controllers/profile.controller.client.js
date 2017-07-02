@@ -8,9 +8,15 @@
         var model = this;
         var userId = $routeParams['userId'];
 
-        model.user = userService.findUserById(userId);
-        model.userId = $routeParams['userId'];
+        // model.user = userService.findUserById(userId);
+        // model.userId = $routeParams['userId'];
 
+        var promise = userService.findUserById(userId);
+
+        promise.then(function (response) {
+            console.log(response);
+            model.user = response.data;
+        });
     }
 
 })();
