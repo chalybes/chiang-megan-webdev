@@ -5,13 +5,6 @@
 
     function userService($http) {
 
-        var users = [
-            {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-            {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-            {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-            {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-        ];
-
         return {
             createUser: createUser,
             findUserByCredentials: findUserByCredentials,
@@ -23,34 +16,50 @@
 
         function findUserByCredentials(username, password) {
 
-            for (var u in users) {
+            var url = "/api/assignment/user?username=" + username + "&password=" + password;
 
-                var user = users[u];
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
 
-                if (user.username === username && user.password === password) {
-                    return user;
-                }
-            }
-            return null;
+            // for (var u in users) {
+            //
+            //     var user = users[u];
+            //
+            //     if (user.username === username && user.password === password) {
+            //         return user;
+            //     }
+            // }
+            // return null;
         }
 
         function findUserById(userId) {
 
-            var url = "/api/user/" + userId;
+            var url = "/api/assignment/user/" + userId;
 
-            $http.get(url);
-
-            // return users.find(function (user) {
-            //     return user._id === userId;
-            // });
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function createUser(user) {
-            user._id = (new Date()).getTime() + "";
-            users.push(user);
+
+            var url = "/api/assignment/user"
+            // creating brand new instance because we're making a new user
+            return $http.post(url, user)
+                .then(function (response) {
+                    return response.data;
+            });
+            // user._id = (new Date()).getTime() + "";
+            // users.push(user);
         }
 
         function updateUser(userId, user) {
+            var url = "/api/assignment/user/" + userId;
+
+            $http.put(url, user)
 
         }
 

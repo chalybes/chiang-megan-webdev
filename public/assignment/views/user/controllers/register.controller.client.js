@@ -16,7 +16,7 @@
                 return;
             }
 
-            var user = userService.findUserByUsername(username);
+            var user = null; //userService.findUserByUsername(username);
 
             if (user !== null) {
                 model.error = "Username is not available";
@@ -24,8 +24,11 @@
                 var user = { username: username,
                              password: password };
                 // model.message = user;
-                userService.createUser(user);
-                $location.url('/user/' + user._id)
+                userService
+                    .createUser(user)
+                    .then(function (user) {
+                        $location.url('/user/' + user._id)
+                    });
             }
 
             if (found !== null) {
