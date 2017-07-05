@@ -3,11 +3,11 @@
         .module('WAM')
         .factory('pageService', pageService);
 
-    function pageService() {
+    function pageService($http) {
 
-        var pages = [{ "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-                     { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-                     { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }];
+        // var pages = [{ "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
+        //              { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
+        //              { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }];
 
         return {
             createPage: createPage,
@@ -18,46 +18,79 @@
         };
 
         function createPage(websiteId, page) {
-            page._id = (new Date()).getTime() + "";
-            page.created = new Date();
-            page.updated = new Date();
-            page.websiteId = websiteId;
-            pages.push(page);
+            // page._id = (new Date()).getTime() + "";
+            // page.created = new Date();
+            // page.updated = new Date();
+            // page.websiteId = websiteId;
+            // pages.push(page);
+
+            var url = "/api/assignment/" + websiteId + "/page";
+            // creating brand new instance because we're making a new page
+            return $http.post(url, page)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function updatePage(pageId, page) {
-            var pagedit = pages.find(function (page) {
-                return page._id === pageId;
-            })
+            // var pagedit = pages.find(function (page) {
+            //     return page._id === pageId;
+            // })
+            // pagedit = page;
 
-            pagedit = page;
+            var url = "/api/assignment/page/" + pageId;
+            return $http.put(url, page)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
         function deletePage(pageId) {
-            var page = pages.find(function (page) {
-                return page._id === pageId;
-            })
-            var index = pages.indexOf(page);
-            pages.splice(index, 1);
+            // var page = pages.find(function (page) {
+            //     return page._id === pageId;
+            // })
+            // var index = pages.indexOf(page);
+            // pages.splice(index, 1);
+
+            var url = "/api/assignment/page/" + pageId;
+
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findPageByWebsiteId(websiteId) {
 
-            var results = [];
+            // var results = [];
+            //
+            // for (var p in pages) {
+            //     if (pages[p].websiteId === websiteId) {
+            //         results.push(pages[p]);
+            //     }
+            // }
+            //
+            // return results;
 
-            for (var p in pages) {
-                if (pages[p].websiteId === websiteId) {
-                    results.push(pages[p]);
-                }
-            }
+            var url = "/api/assignment/" + websiteId;
 
-            return results;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
         function findPageById(pageId) {
-            return pages.find(function (page) {
-                return page._id === pageId;
-            });
+            // return pages.find(function (page) {
+            //     return page._id === pageId;
+            // });
+
+            var url = "/api/assignment/page/" + pageId;
+
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
     }

@@ -38,6 +38,14 @@
                 })
         }
 
+        function deleteUser(user) {
+            userService
+                .deleteUser(user._id)
+                .then(function () {
+                    $location.url('/login');
+                });
+        }
+
     }
 
 })();

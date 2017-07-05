@@ -51,7 +51,7 @@
             return $http.post(url, user)
                 .then(function (response) {
                     return response.data;
-            });
+                });
             // user._id = (new Date()).getTime() + "";
             // users.push(user);
         }
@@ -59,18 +59,28 @@
         function updateUser(userId, user) {
             var url = "/api/assignment/user/" + userId;
 
-            $http.put(url, user)
-
+            return $http.put(url, user)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
         function deleteUser(userId) {
-            var user = users.find(function (user) {
-                return user._id === userId;
-            })
-            var index = users.indexOf(user);
-            users.splice(index, 1);
+            // var user = users.find(function (user) {
+            //     return user._id === userId;
+            // })
+            // var index = users.indexOf(user);
+            // users.splice(index, 1);
+
+            var url = "/api/assignment/user/" + userId;
+
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
+        // MIGHT NEED TO WORK ON THIS --- MAKE IT SERVER-SIDE!
         function findUserByUsername(username) {
             var user =  users.find(function (user) {
                 return user.username === username;
@@ -81,7 +91,6 @@
             } else {
                 return user;
             }
-
         }
 
     }

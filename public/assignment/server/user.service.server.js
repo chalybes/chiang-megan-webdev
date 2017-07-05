@@ -4,6 +4,7 @@ app.get('/api/assignment/user', findUserByCredentials);
 app.get('/api/assignment/user/:userId', findUserById);
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
+app.delete('/api/assignment/user/:userId', deleteUser);
 
 var users = [
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -29,6 +30,17 @@ function updateUser(req, res) {
             return;
         }
     }
+    res.sendStatus(404);
+}
+
+function deleteUser(req, res) {
+    var userId = req.params.userId;
+    var user = users.find(function (user) {
+        return user._id === userId;
+    });
+    var index = users.indexOf(user);
+    users.splice(index, 1);
+    res.sendStatus(200);
 }
 
 function findUserByCredentials(req, res) {
