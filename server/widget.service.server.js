@@ -1,12 +1,12 @@
-var app = require('../../../express');
+var app = require('../express');
 
 var multer = require('multer'); // npm install multer --save
 var upload = multer({ dest: __dirname + '/../../uploads' });
 
 app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
 app.get('/api/assignment/widget/:widgetId', findWidgetById);
-app.get('/api/assignment/:pageId', findWidgetsByPageId);
-app.post('/api/assignment/:pageId/widget', createWidget);
+app.get('/api/assignment/page/:pageId/widget', findWidgetsByPageId);
+app.post('/api/assignment/page/:pageId/widget', createWidget);
 app.put('/api/assignment/widget/:widgetId', updateWidget);
 app.delete('/api/assignment/widget/:widgetId', deleteWidget);
 

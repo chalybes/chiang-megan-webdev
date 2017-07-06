@@ -31,26 +31,26 @@
             var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
             url += "/" + photo.id + "_" + photo.secret + "_n.jpg";
 
-            // model.widget.url = url;
+            model.widget.url = url;
 
             widgetService
                 .updateWidget(model.widgetId, model.widget)
                 .then(function (widget) {
                     // $location.url('/widget/' + widget._id)
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget')
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/')
                 });
         }
 
-        // function init() {
-        //
-        //     widgetService
-        //         .findWidgetById(model.widgetId)
-        //         .then(function (widget) {
-        //             model.widget = widget;
-        //         });
-        // }
-        //
-        // init();
+        function init() {
+
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then(function (widget) {
+                    model.widget = widget;
+                });
+        }
+
+        init();
 
     }
 

@@ -1,6 +1,6 @@
 // module.exports = function(app) {
 
-var app = require('../../../express');
+var app = require('../express');
 
 require('./user.service.server');
 require('./website.service.server');

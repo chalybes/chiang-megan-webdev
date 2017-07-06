@@ -18,7 +18,7 @@
             // widget.pageId = pageId;
             // widgets.push(widget);
 
-            var url = "/api/assignment/" + pageId + "/widget"
+            var url = "/api/assignment/page/" + pageId + "/widget"
             // creating brand new instance because we're making a new widget
             return $http.post(url, widget)
                 .then(function (response) {
@@ -65,7 +65,7 @@
             // }
             // return results;
 
-            var url = "/api/assignment/" + pageId;
+            var url = "/api/assignment/page/" + pageId + "/widget";
 
             return $http.get(url)
                 .then(function (response) {

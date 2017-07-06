@@ -17,46 +17,76 @@
 
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
+            <div ng-switch="model.widget.widgetType">
 
-            <label for="type">Widget Type</label>
-            <input class="form-control"
-                   ng-model="model.widget.widgetType"
-                   placeholder="facebook"
-                   id="type"/>
+                <label for="type">Widget Type</label>
+                <input class="form-control"
+                       ng-model="model.widget.widgetType"
+                       placeholder="facebook"
+                       id="type"/>
 
-            <label for="size">Size</label>
-            <input class="form-control"
-                   ng-model="model.widget.size"
-                   placeholder="Size"
-                   id="size"/>
+                <label for="size" ng-switch-when="HEADING">Size</label>
+                <input class="form-control"
+                       ng-model="model.widget.size"
+                       ng-switch-when="HEADING"
+                       placeholder="Size"
+                       id="size"/>
 
-            <label for="width">Width</label>
-            <input class="form-control"
-                   ng-model="model.widget.width"
-                   placeholder="Width"
-                   id="width"/>
+                <label for="width" ng-switch-when="YOUTUBE">Width</label>
+                <input class="form-control"
+                       ng-model="model.widget.width"
+                       ng-switch-when="YOUTUBE"
+                       placeholder="Width"
+                       id="width"/>
 
-            <label for="url">Url</label>
-            <input class="form-control"
-                   ng-model="model.widget.url"
-                   placeholder="URL"
-                   id="url"/>
+                <label for="url" ng-switch-when="IMAGE">Url</label>
+                <input class="form-control"
+                ng-model="model.widget.url"
+                ng-switch-when="IMAGE"
+                placeholder="URL"
+                id="url"/>
 
-            <label for="description">Text</label>
-            <textarea id="description"
-                      rows="5"
-                      ng-model="model.widget.text"
-                      placeholder="So big it is its own country"
-                      class="form-control"></textarea>
+                <label for="description" ng-switch-when="HEADING">Text</label>
+                <textarea id="description"
+                          rows="5"
+                          ng-model="model.widget.text"
+                          ng-switch-when="HEADING"
+                          placeholder="So big it is its own country"
+                          class="form-control"></textarea>
 
-            <a ng-click="model.updateWidget(model.widgetId, model.widget)"
-               class="btn btn-block btn-success">
-                Update
-            </a>
-            <a ng-click="model.deleteWidget(model.widgetId)"
-               class="btn btn-block btn-danger">
-                Delete
-            </a>
+                <label for="description" ng-switch-when="HTML">Text</label>
+                <textarea id="description"
+                          rows="5"
+                          ng-model="model.widget.text"
+                          ng-switch-when="HTML"
+                          placeholder="So big it is its own country"
+                          class="form-control"></textarea>
+
+                <a class="btn btn-info btn-block form-control"
+                   href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/flickrSearch"
+                   ng-switch-when="IMAGE">Search</a>
+
+                <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data" ng-switch-when="IMAGE">
+                    <input  name="myFile"    type="file" class="form-control"/>
+                    <!--<input  name="width"     value="{{model.widget.width}}" style="display: none"/>-->
+                    <!--<input  name="userId"    value="{{model.userId}}"       style="display: none"/>-->
+                    <!--<input  name="websiteId" value="{{model.websiteId}}"    style="display: none"/>-->
+                    <!--<input  name="pageId"    value="{{model.pageId}}"       style="display: none"/>-->
+                    <input  name="widgetId"      value="{{model.widgetId}}"   style="display: none"/>
+                    <button type="submit"    class="btn btn-block btn-primary form-control">Upload Image</button>
+                </form>
+
+                <a ng-click="model.updateWidget(model.widgetId, model.widget)"
+                   class="btn btn-block btn-success">
+                    Update
+                </a>
+
+                <a ng-click="model.deleteWidget(model.widgetId)"
+                   class="btn btn-block btn-danger">
+                    Delete
+                </a>
+
+            </div>
         </div>
     </div>
 </div>
