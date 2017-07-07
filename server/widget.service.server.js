@@ -1,7 +1,7 @@
 var app = require('../express');
 
 var multer = require('multer'); // npm install multer --save
-var upload = multer({ dest: __dirname + '/../../uploads' });
+var upload = multer({ dest: __dirname + '/public/assignment/uploads' });
 
 app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
 app.get('/api/assignment/widget/:widgetId', findWidgetById);
@@ -21,7 +21,7 @@ var widgets = [{ "_id": "123", "widgetType": "HEADING", "pageId": "321", "size":
 
 function uploadImage(req, res) {
 
-    var widgetId      = req.body.widgetId;
+    var widgetId      = req.body.widgetId; //assuming you're editing a widget, otherwise there wouldn't be an ID
     var width         = req.body.width;
     var myFile        = req.file;
 
@@ -36,13 +36,15 @@ function uploadImage(req, res) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    //widget = getWidgetById(widgetId);
+    // widget = findWidgetById(widgetId);
 
-    widget = {};
+    widget = {"_id": null, "widgetType": "IMAGE", "pageId": pageId, "width": width, "url": null};
 
-    widget.url = '/assignment/upload/' + filename;
+    widget.url = '/public/assignment/uploads/' + filename;
 
-    var callbackUrl   = "/assignment/index.html#!/user/" + userId + "/website/"+ websiteId + "/page/" + pageId + "/widget/" + widgetId;
+    createWidget(pageId, widget);
+
+    var callbackUrl   = "/assignment/index.html#!/user/" + userId + "/website/"+ websiteId + "/page/" + pageId + "/widget";
 
     res.redirect(callbackUrl);
 }
