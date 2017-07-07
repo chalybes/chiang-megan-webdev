@@ -17,23 +17,23 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
 
-            <!--<label for="type">Widget Type</label>-->
-            <!--<input class="form-control"-->
-                   <!--ng-model="model.widget.widgetType"-->
-                   <!--placeholder="IMAGE"-->
-                   <!--id="type"/>-->
+            <label for="type">Widget Type</label>
+            <input class="form-control"
+                   ng-model="model.widget.widgetType"
+                   placeholder="IMAGE"
+                   id="type"/>
 
-            <!--<label for="URL">URL</label>-->
-            <!--<input class="form-control"-->
-                   <!--ng-model="model.widget.url"-->
-                   <!--placeholder="URL"-->
-                   <!--id="URL"/>-->
+            <label for="URL">URL</label>
+            <input class="form-control"
+                   ng-model="model.widget.url"
+                   placeholder="URL"
+                   id="URL"/>
 
-            <!--<label for="width">Width</label>-->
-            <!--<input class="form-control"-->
-                   <!--ng-model="model.widget.width"-->
-                   <!--placeholder="Width"-->
-                   <!--id="width"/>-->
+            <label for="width">Width</label>
+            <input class="form-control"
+                   ng-model="model.widget.width"
+                   placeholder="Width"
+                   id="width"/>
 
             <a class="btn btn-info btn-block form-control"
                href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/flickrSearch">Search</a>
@@ -48,8 +48,8 @@
                 <button type="submit"    class="btn btn-block btn-primary form-control">Upload Image</button>
             </form>
 
-            <!--<a ng-click="model.createWidget(model.pageId, model.widget)"-->
-               <!--class="btn btn-block btn-success">Upload</a>-->
+            <a ng-click="model.createWidget(model.pageId, model.widget)"
+               class="btn btn-block btn-success">Upload from URL</a>
 
             <a ng-click="model.deleteWidget(model.widgetId)"
                class="btn btn-block btn-danger form-control">Delete</a>
