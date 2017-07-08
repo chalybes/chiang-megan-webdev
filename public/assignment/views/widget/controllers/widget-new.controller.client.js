@@ -13,6 +13,7 @@
         model.pageId = $routeParams['pageId'];
         model.createWidget = createWidget;
 
+
         function init() {
             model.widgets = widgetService.findWidgetsByPageId(model.pageId);
         }

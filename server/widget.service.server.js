@@ -1,7 +1,7 @@
 var app = require('../express');
 
 var multer = require('multer'); // npm install multer --save
-var upload = multer({ dest: __dirname + '/public/assignment/uploads' });
+var upload = multer({ dest: __dirname + '/../public/assignment/uploads' });
 
 app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
 app.get('/api/assignment/widget/:widgetId', findWidgetById);
@@ -38,13 +38,25 @@ function uploadImage(req, res) {
 
     // widget = findWidgetById(widgetId);
 
-    widget = {"_id": null, "widgetType": "IMAGE", "pageId": pageId, "width": width, "url": null};
+    var widget = widgets.find(function (widget) {
+        return widget._id === widgetId;
+    });
+    if (widget == null) {
+        widget = {};
+    }
 
-    widget.url = '/public/assignment/uploads/' + filename;
+    // widget = {"_id": null, "widgetType": "IMAGE", "pageId": pageId, "width": width, "url": null};
 
-    createWidget(pageId, widget);
+    widget.url = '/../public/assignment/uploads/' + filename;
 
-    var callbackUrl   = "/assignment/index.html#!/user/" + userId + "/website/"+ websiteId + "/page/" + pageId + "/widget";
+    // createWidget(pageId, widget);
+
+    var callbackUrl   = "/assignment/index.html#!/user/" + userId + "/website/"+ websiteId + "/page/" + pageId + "/widget/" + widgetId;
+
+    if (widget._id == null) {
+        callbackUrl   = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/new-image"
+            + "?url=" + widget.url;
+    }
 
     res.redirect(callbackUrl);
 }
@@ -53,6 +65,15 @@ function createWidget(req, res) {
     var widget = req.body;
     widget._id = (new Date()).getTime() + "";
     widget.pageId = req.params.pageId;
+
+    //This is for creating an image widget from uploadImage(), if there exists an query parameter in the URL when pressing
+    //an HTML form button that would call this createWidget() method, the query parameter would be taken from the URL
+    //and be passed in. In this case the query parameter is the URL for the uploaded image from uploadImage(), passed
+    //in to be set as the URL for a new widget
+    if (req.query['url']) {
+        widget.url = req.query['url'];
+    }
+
     widgets.push(widget);
     res.send(widget);
 }

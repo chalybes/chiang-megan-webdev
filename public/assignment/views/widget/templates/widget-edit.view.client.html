@@ -68,11 +68,11 @@
 
                 <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data" ng-switch-when="IMAGE">
                     <input  name="myFile"    type="file" class="form-control"/>
-                    <!--<input  name="width"     value="{{model.widget.width}}" style="display: none"/>-->
-                    <!--<input  name="userId"    value="{{model.userId}}"       style="display: none"/>-->
-                    <!--<input  name="websiteId" value="{{model.websiteId}}"    style="display: none"/>-->
-                    <!--<input  name="pageId"    value="{{model.pageId}}"       style="display: none"/>-->
-                    <input  name="widgetId"      value="{{model.widgetId}}"   style="display: none"/>
+                    <input  name="width"       value="{{model.widget.width}}" style="display: none"/>
+                    <input  name="userId"      value="{{model.userId}}"       style="display: none"/>
+                    <input  name="websiteId"   value="{{model.websiteId}}"    style="display: none"/>
+                    <input  name="pageId"      value="{{model.pageId}}"       style="display: none"/>
+                    <input  name="widgetId"    value="{{model.widgetId}}"     style="display: none"/>
                     <button type="submit"    class="btn btn-block btn-primary form-control">Upload Image</button>
                 </form>
 
