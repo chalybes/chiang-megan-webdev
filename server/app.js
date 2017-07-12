@@ -1,6 +1,10 @@
+//This file is the entry point to all server-side logic required to run this MEAN app
 // module.exports = function(app) {
 
 var app = require('../express');
+var mongoose = require('mongoose');
+mongoose.Promise = require('q').Promise;
+mongoose.connect('mongodb://localhost/test'); //tells where the mongodb connection is running
 
 require('./user.service.server');
 require('./website.service.server');

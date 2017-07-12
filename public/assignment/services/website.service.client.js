@@ -27,11 +27,16 @@
             });
         }
 
-        function createWebsite(website) {
-            website._id = (new Date()).getTime() + "";
-            website.created = new Date();
-            website.updated = new Date();
-            websites.push(website);
+        function createWebsite(userId, website) {
+            // website._id = (new Date()).getTime() + "";
+            // website.created = new Date();
+            // website.updated = new Date();
+            // websites.push(website);
+
+            return $http.post('api/assignment/user/' + userId+ '/website', website)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function updateWebsite(websiteId, website) {

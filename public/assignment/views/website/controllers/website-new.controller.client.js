@@ -17,9 +17,12 @@
         init();
 
         function createWebsite(website) {
-            website.developerId = model.userId;
-            websiteService.createWebsite(website);
-            $location.url('/user/' + model.userId + '/website');
+            // website.developerId = model.userId;
+            websiteService
+                .createWebsite(model.userId, website)
+                .then(function (website) {
+                    $location.url('/user/' + model.userId + '/website');
+                });
         }
 
     }
