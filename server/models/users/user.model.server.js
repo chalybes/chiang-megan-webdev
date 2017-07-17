@@ -2,12 +2,14 @@ var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
 
 var userModel = mongoose.model('UserModel', userSchema);
+
 userModel.createUser = createUser;
 userModel.findUserById = findUserById;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.deleteUser = deleteUser;
 userModel.updateUser = updateUser;
+userModel.addWebsite = addWebsite;
 
 module.exports = userModel;
 
@@ -39,4 +41,13 @@ function updateUser(userId, newUser) {
         //         lastName: newUser.lastName,
         //         email: newUser.email,
         //         phone: newUser.phone }
+}
+
+function addWebsite(userId, websiteId) {
+    return userModel
+        .findById(userId)
+        .then(function (user) {
+            user.websites.push(websiteId);
+            return user.save();
+        });
 }

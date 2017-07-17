@@ -82,15 +82,21 @@
 
         // MIGHT NEED TO WORK ON THIS --- MAKE IT SERVER-SIDE!
         function findUserByUsername(username) {
-            var user =  users.find(function (user) {
-                return user.username === username;
-            });
+            // var user =  users.find(function (user) {
+            //     return user.username === username;
+            // });
+            //
+            // if (typeof user === 'undefined') {
+            //     return null;
+            // } else {
+            //     return user;
+            // }
 
-            if (typeof user === 'undefined') {
-                return null;
-            } else {
-                return user;
-            }
+            var url = "/api/assignment/graduate/user?username=" + username;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
     }

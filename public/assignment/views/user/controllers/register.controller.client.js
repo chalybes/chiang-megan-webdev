@@ -27,7 +27,7 @@
                 return userService
                     .createUser(user)
                     .then(function (user) {
-                        $location.url('/user/' + user._id)
+                        $location.url('/user/' + user._id + '/websites')
                     });
             }
 

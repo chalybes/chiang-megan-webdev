@@ -1,8 +1,8 @@
 var app = require('../express');
 var websiteModel = require('./models/websites/website.model.server');
 
-app.get('/api/assignment/user/:userId/website', findAllWebsitesForUser);
-app.post('api/assignment/user/:userId/website', createWebsite);
+app.get('/api/assignment/user/:userId/websites', findAllWebsitesForUser);
+app.post('api/assignment/user/:userId/websites', createWebsite);
 
 var websites = [{ "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
                 { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
