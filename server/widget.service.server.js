@@ -1,4 +1,5 @@
 var app = require('../express');
+var widgetModel = require('./models/widgets/widget.model.server');
 
 var multer = require('multer'); // npm install multer --save
 var upload = multer({ dest: __dirname + '/../public/assignment/uploads' });
@@ -51,10 +52,10 @@ function uploadImage(req, res) {
 
     // createWidget(pageId, widget);
 
-    var callbackUrl   = "/assignment/index.html#!/user/" + userId + "/website/"+ websiteId + "/page/" + pageId + "/widget/" + widgetId;
+    var callbackUrl   = "/assignment/index.html#!/user/" + userId + "/websites/"+ websiteId + "/page/" + pageId + "/widget/" + widgetId;
 
     if (widget._id == null) {
-        callbackUrl   = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/new-image"
+        callbackUrl   = "/assignment/#!/user/" + userId + "/websites/" + websiteId + "/page/" + pageId + "/widget/new-image"
             + "?url=" + widget.url;
     }
 

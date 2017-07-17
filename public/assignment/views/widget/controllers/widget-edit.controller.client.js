@@ -37,17 +37,17 @@
         function createWidget(pageId, widget) {
             widget.pageId = model.pageId;
             widgetService.createWidget(widget);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
+            $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/page/' + model.pageId + '/widget');
         }
 
         function updateWidget(widgetId, widget) {
             widgetService.updateWidget(widgetId, widget);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
+            $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/page/' + model.pageId + '/widget');
         }
 
         function deleteWidget(widgetId) {
             widgetService.deleteWidget(widgetId);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
+            $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/page/' + model.pageId + '/widget');
         }
 
     }

@@ -1,4 +1,4 @@
-//This file is the entry point to all server-side logic required to run this MEAN app
+//This file is the entry point to all server-side logic required to run the assignment MEAN app
 // module.exports = function(app) {
 
 var app = require('../express');

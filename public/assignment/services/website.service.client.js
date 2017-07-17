@@ -28,12 +28,12 @@
         }
 
         function createWebsite(userId, website) {
-            // website._id = (new Date()).getTime() + "";
-            // website.created = new Date();
-            // website.updated = new Date();
-            // websites.push(website);
+            // websites._id = (new Date()).getTime() + "";
+            // websites.created = new Date();
+            // websites.updated = new Date();
+            // websites.push(websites);
 
-            return $http.post('api/assignment/user/' + userId+ '/website', website)
+            return $http.post('api/assignment/user/' + userId+ '/websites', website)
                 .then(function (response) {
                     return response.data;
                 });
@@ -67,7 +67,7 @@
             // }
             // return resultSet;
 
-            var url = "/api/assignment/user/" + userId + "/website"
+            var url = "/api/assignment/user/" + userId + "/websites"
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

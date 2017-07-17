@@ -28,7 +28,7 @@
             widget.url = model.widget.url;
 
             widgetService.createWidget(pageId, widget);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
+            $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/page/' + model.pageId + '/widget');
         }
 
     }

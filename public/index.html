@@ -1,43 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">-->
+    <!--<title>Web Dev Course Home Page</title>-->
+    <!--<link href="/assignment/css/bootstrap-3.3.7-dist/css/bootstrap.min.css"-->
+          <!--type="text/css"-->
+          <!--rel="stylesheet"/>-->
+    <!--<link href="/assignment/css/style.css" rel="stylesheet"/>-->
+    <!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+    <!--<script src="/assignment/vendor/sequence/imagesloaded.pkgd.min.js"></script>-->
+    <!--<script src="/assignment/vendor/sequence/hammer.min.js"></script>-->
+    <!--<script src="/assignment/vendor/sequence/sequence.min.js"></script>-->
+    <!--<script src="/assignment/vendor/sequence/sequence-theme.intro.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-12">-->
+            <!--<h1>Web Dev Course Home Page</h1>-->
+
+            <!--<h2>Required links</h2>-->
+                <!--<ul>-->
+                    <!--<li>-->
+                     <!--<a href="project/index.html">Project</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                     <!--<a href="assignment/index.html">Current Assignment</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                     <!--<a href="test/index.html">Test MongoDB</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                     <!--<a href="https://github.com/chalybes/chiang-megan-webdev">My GitHub</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <title>Web Dev Course Home Page</title>
-    <link href="/assignment/css/bootstrap-3.3.7-dist/css/bootstrap.min.css"
-          type="text/css"
-          rel="stylesheet"/>
-    <link href="/assignment/css/style.css" rel="stylesheet"/>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="/assignment/vendor/sequence/imagesloaded.pkgd.min.js"></script>
-    <script src="/assignment/vendor/sequence/hammer.min.js"></script>
-    <script src="/assignment/vendor/sequence/sequence.min.js"></script>
-    <script src="/assignment/vendor/sequence/sequence-theme.intro.js"></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0" name="viewport">
+
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <link href="./project/css/aostyles.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Web Dev Course Home Page</h1>
+<div class="item clearfix mid" data-aos="fade-right"><img src="./project/img/DSC_0717.JPG" alt="Bellingham">
+    <h1>About Me</h1></div>
 
-            <h2>Required links</h2>
-                <ul>
-                    <li>
-                     <a href="project/index.html">Project</a>
-                    </li>
-                    <li>
-                     <a href="assignment/index.html">Current Assignment</a>
-                    </li>
-                    <li>
-                     <a href="test/index.html">Test MongoDB</a>
-                    </li>
-                    <li>
-                     <a href="https://github.com/chalybes/chiang-megan-webdev">My GitHub</a>
-                    </li>
-                </ul>
-        </div>
-    </div>
-</div>
+<div class="item clearfix mid" data-aos="fade-left"><img src="./project/img/VisikolHISTOWholeMouseBrain.jpeg">
+    <h1><a href="project/index.html">Project</a></h1></div>
+
+<div class="item mid" data-aos="zoom-in"><img src="./project/img/kermitpanic.gif">
+    <h2><a href="assignment/index.html">Current Assignment</a></h2></div>
+
+<div class="item" data-aos="zoom-out"><a href="test/index.html">Test MongoDB</a></div>
+
+<div class="item" data-aos="flip-up"><a href="https://github.com/chalybes/chiang-megan-webdev">My GitHub</a></div>
+
+
+<script src="./project/aos/dist/aos.js"></script>
+<script>
+    AOS.init({
+        easing: 'ease-in-out-sine'
+    });
+</script>
 </body>
 </html>

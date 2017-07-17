@@ -13,5 +13,4 @@
             link: linkFunction
         }
     }
-
 })();

@@ -23,17 +23,17 @@
         function createWebsite(website) {
             website.developerId = model.userId;
             websiteService.createWebsite(website);
-            $location.url('/user/' + model.userId + '/website');
+            $location.url('/user/' + model.userId + '/websites');
         }
 
         function updateWebsite(website, websiteId) {
             websiteService.updateWebsite(website, websiteId);
-            $location.url('/user/' + model.userId + '/website');
+            $location.url('/user/' + model.userId + '/websites');
         }
 
         function deleteWebsite(websiteId) {
             websiteService.deleteWebsite(websiteId);
-            $location.url('/user/' + model.userId + '/website');
+            $location.url('/user/' + model.userId + '/websites');
         }
 
     }

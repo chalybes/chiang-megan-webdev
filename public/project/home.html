@@ -1,0 +1,24 @@
+<body>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mouse Line</th>
+            <th>Status</th>
+            <th>Generation</th>
+            <th>Litters Due</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="stock in model.mouselines">
+            <td>{{stock.name}}</td>
+            <td>{{stock.status}}</td>
+            <td>{{stock.generation}}</td>
+            <td>{{stock.litters | date: 'short'}}</td>
+            <td>{{stock.availability}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</body>

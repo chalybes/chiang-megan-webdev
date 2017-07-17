@@ -1,4 +1,5 @@
 var app = require('../express');
+var pageModel = require('./models/pages/page.model.server');
 
 app.get('/api/assignment/page/:pageId', findPageById);
 app.get('/api/assignment/:websiteId', findPageByWebsiteId);

@@ -24,19 +24,19 @@
                 var user = { username: username,
                              password: password };
                 // model.message = user;
-                userService
+                return userService
                     .createUser(user)
                     .then(function (user) {
                         $location.url('/user/' + user._id)
                     });
             }
 
-            if (found !== null) {
-                $location.url('/user/' + found._id);
-                // $scope.message = "Welcome " + username;
-            } else {
-                model.message = "Username " + username + " not found, please try again";
-            }
+            // if (found !== null) {
+            //     $location.url('/user/' + found._id);
+            //     // $scope.message = "Welcome " + username;
+            // } else {
+            //     model.message = "Username " + username + " not found, please try again";
+            // }
         }
     }
 

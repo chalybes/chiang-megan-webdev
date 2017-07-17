@@ -24,17 +24,17 @@
         function createPage(page) {
             page.websiteId = model.websiteId;
             pageService.createPage(page);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/page');
         }
 
         function updatePage(page, pageId) {
             pageService.updatePage(page, pageId);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/page');
         }
 
         function deletePage(pageId) {
             pageService.deletePage(pageId);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/page');
         }
 
     }

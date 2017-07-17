@@ -37,7 +37,7 @@
                 .updateWidget(model.widgetId, model.widget)
                 .then(function (widget) {
                     // $location.url('/widget/' + widget._id)
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/')
+                    $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/page/' + model.pageId + '/widget/')
                 });
         }
 

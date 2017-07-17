@@ -1,5 +1,5 @@
 var app = require('../express');
-var userModel = require('/server/models/users/user.model.server');
+var userModel = require('./models/users/user.model.server');
 
 app.get('/api/assignment/user', findUserByCredentials);
 app.get('/api/assignment/user/:userId', findUserById);

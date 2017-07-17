@@ -23,77 +23,77 @@
                 controller: 'profileController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website', {
+            .when('/user/:userId/websites', {
                 templateUrl: 'views/website/templates/website-list.view.client.html',
                 controller: 'websiteListController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/new', {
+            .when('/user/:userId/websites/new', {
                 templateUrl: 'views/website/templates/website-new.view.client.html',
                 controller: 'websiteNewController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId', {
+            .when('/user/:userId/websites/:websiteId', {
                 templateUrl: 'views/website/templates/website-edit.view.client.html',
                 controller: 'websiteEditController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page', {
+            .when('/user/:userId/websites/:websiteId/page', {
                 templateUrl: 'views/page/templates/page-list.view.client.html',
                 controller: 'pageListController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/new', {
+            .when('/user/:userId/websites/:websiteId/page/new', {
                 templateUrl: 'views/page/templates/page-new.view.client.html',
                 controller: 'pageNewController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId', {
                 templateUrl: 'views/page/templates/page-edit.view.client.html',
                 controller: 'pageEditController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId/widget', {
                 templateUrl: 'views/widget/templates/widget-list.view.client.html',
                 controller: 'widgetListController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId/widget/new', {
                 templateUrl: 'views/widget/templates/widget-chooser.view.client.html',
                 controller: 'widgetNewController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new-header', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId/widget/new-header', {
                 templateUrl: 'views/widget/templates/widget-header.view.client.html',
                 controller: 'widgetNewController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new-image', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId/widget/new-image', {
                 templateUrl: 'views/widget/templates/widget-image-editor.view.client.html',
                 controller: 'widgetNewController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new-html', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId/widget/new-html', {
                 templateUrl: 'views/widget/templates/widget-new-html.view.client.html',
                 controller: 'widgetNewController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new-youtube', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId/widget/new-youtube', {
                 templateUrl: 'views/widget/templates/widget-new-youtube.view.client.html',
                 controller: 'widgetNewController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/edit', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId/widget/:widgetId/edit', {
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 controller: 'widgetEditController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/image-editor', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId/widget/:widgetId/image-editor', {
                 templateUrl: 'views/widget/templates/widget-image-editor.view.client.html',
                 controller: 'widgetEditController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/flickrSearch', {
+            .when('/user/:userId/websites/:websiteId/page/:pageId/widget/:widgetId/flickrSearch', {
                 templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
                 controller: 'flickrController',
                 controllerAs: 'model'
