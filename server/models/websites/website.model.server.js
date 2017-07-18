@@ -23,9 +23,10 @@ function createWebsite(userId, website) {
 }
 
 function findAllWebsitesForUser(userId) {
-    return websiteModel.find({_user: userId});
-        // .populate('_user')
-        // .exec();
+    return websiteModel
+        .find({_user: userId})
+        .populate('_user')
+        .exec();
 }
 
 function deleteWebsite(userId, websiteId) {
