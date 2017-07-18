@@ -22,9 +22,15 @@
         };
 
         function findWebsiteById(websiteId) {
-            return websites.find(function (website) {
-                return website._id === websiteId;
-            });
+            // return websites.find(function (website) {
+            //     return website._id === websiteId;
+            // });
+
+            var url = "/api/assignment/website/" + websiteId;
+            return $http.get(url)
+                .then(function(response) {
+                    return response.data;
+                });
         }
 
         function createWebsite(userId, website) {
@@ -40,19 +46,33 @@
         }
 
         function updateWebsite(websiteId, website) {
-            var websitedit = websites.find(function (website) {
-                return website._id === websiteId;
-            })
+            // var websitedit = websites.find(function (website) {
+            //     return website._id === websiteId;
+            // })
+            //
+            // websitedit = website;
 
-            websitedit = website;
+            var url = "/api/assignment/website/" + websiteId;
+
+            return $http.put(url, website)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function deleteWebsite(websiteId) {
-            var website = websites.find(function (website) {
-                return website._id === websiteId;
-            })
-            var index = websites.indexOf(website);
-            websites.splice(index, 1);
+            // var website = websites.find(function (website) {
+            //     return website._id === websiteId;
+            // })
+            // var index = websites.indexOf(website);
+            // websites.splice(index, 1);
+
+            var url = "/api/assignment/website/" + websiteId;
+
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findAllWebsitesForUser(userId) {

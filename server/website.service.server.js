@@ -2,10 +2,10 @@ var app = require('../express');
 var websiteModel = require('./models/websites/website.model.server');
 
 app.get('/api/assignment/user/:userId/website', findAllWebsitesForUser);
-app.get("/api/website/:websiteId", findWebsiteById);
+app.get("/api/assignment/website/:websiteId", findWebsiteById);
 app.post('/api/assignment/user/:userId/website', createWebsite);
-app.put("/api/website/:websiteId", updateWebsite);
-app.delete("/api/website/:websiteId", deleteWebsite);
+app.put("/api/assignment/website/:websiteId", updateWebsite);
+app.delete("/api/assignment/website/:websiteId", deleteWebsite);
 
 var websites = [{ "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
                 { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
