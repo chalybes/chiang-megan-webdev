@@ -1,8 +1,8 @@
 var app = require('../express');
 var websiteModel = require('./models/websites/website.model.server');
 
-app.get('/api/assignment/user/:userId/websites', findAllWebsitesForUser);
-app.post('api/assignment/user/:userId/websites', createWebsite);
+app.get('/api/assignment/user/:userId/website', findAllWebsitesForUser);
+app.post('/api/assignment/user/:userId/website', createWebsite);
 
 var websites = [{ "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
                 { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -29,7 +29,7 @@ function findAllWebsitesForUser(req, res) {
         .findAllWebsitesForUser(req.params.userId)
         .then(function (websites) {
             res.json(websites);
-        })
+        });
 }
 
 function createWebsite(req, res) {
@@ -37,7 +37,7 @@ function createWebsite(req, res) {
     var userId = req.params.userId;
     website._user = userId;
     websiteModel
-        .createWebsite(website)
+        .createWebsite(userId, website)
         .then(function (website) {
             res.json(website);
         });

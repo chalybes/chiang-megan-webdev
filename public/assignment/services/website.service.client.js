@@ -33,7 +33,7 @@
             // websites.updated = new Date();
             // websites.push(websites);
 
-            return $http.post('api/assignment/user/' + userId+ '/websites', website)
+            return $http.post('/api/assignment/user/' + userId + '/website', website)
                 .then(function (response) {
                     return response.data;
                 });
@@ -67,7 +67,7 @@
             // }
             // return resultSet;
 
-            var url = "/api/assignment/user/" + userId + "/websites"
+            var url = "/api/assignment/user/" + userId + "/website"
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
