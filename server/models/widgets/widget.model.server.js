@@ -1,11 +1,12 @@
 var mongoose = require('mongoose');
+mongoose.Promise = require("q").Promise;
 
 var widgetSchema = require('./widget.schema.server');
 
 var widgetModel = mongoose.model('userWidgetModel', widgetSchema);
 
 widgetModel.createWidget = createWidget;
-widgetModel.findWidgetByPageId = findWidgetByPageId;
+widgetModel.findWidgetsByPageId = findWidgetsByPageId;
 widgetModel.findWidgetById = findWidgetById;
 widgetModel.updateWidget = updateWidget;
 widgetModel.deleteWidget = deleteWidget;
@@ -17,7 +18,7 @@ function createWidget(pageId, widget) {
     return widgetModel.create(widget);
 }
 
-function findWidgetByPageId(pageId) {
+function findWidgetsByPageId(pageId) {
     return widgetModel.find({_page: pageId})
         .populate("_page")
         .sort({index: "ascending"})

@@ -17,7 +17,7 @@
                 .findPageByWebsiteId(model.websiteId)
                 .then(function (pages) {
                     model.pages = pages;
-                })
+                });
         }
 
         init();

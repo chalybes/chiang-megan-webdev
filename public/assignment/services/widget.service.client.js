@@ -18,7 +18,7 @@
             // widget.pageId = pageId;
             // widgets.push(widget);
 
-            var url = "/api/assignment/page/" + pageId + "/widget"
+            var url = "/api/assignment/" + pageId + "/widget"
             // creating brand new instance because we're making a new widget
             return $http.post(url, widget)
                 .then(function (response) {
@@ -65,7 +65,7 @@
             // }
             // return results;
 
-            var url = "/api/assignment/page/" + pageId + "/widget";
+            var url = "/api/page/" + pageId + "/widget";
 
             return $http.get(url)
                 .then(function (response) {
@@ -78,7 +78,7 @@
             //     return widget._id === widgetId;
             // });
 
-            var url = "/api/assignment/widget/" + widgetId;
+            var url = "/api/widget/" + widgetId;
 
             return $http.get(url)
                 .then(function (response) {

@@ -5,9 +5,10 @@ var multer = require('multer'); // npm install multer --save
 var upload = multer({ dest: __dirname + '/../public/assignment/uploads' });
 
 app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
-app.get('/api/assignment/widget/:widgetId', findWidgetById);
-app.get('/api/assignment/page/:pageId/widget', findWidgetsByPageId);
-app.post('/api/assignment/page/:pageId/widget', createWidget);
+
+app.get('/api/widget/:widgetId', findWidgetById);
+app.get('/api/page/:pageId/widget', findWidgetsByPageId);
+app.post('/api/assignment/:pageId/widget', createWidget);
 app.put('/api/assignment/widget/:widgetId', updateWidget);
 app.delete('/api/assignment/widget/:widgetId', deleteWidget);
 
@@ -63,66 +64,113 @@ function uploadImage(req, res) {
 }
 
 function createWidget(req, res) {
+    // var widget = req.body;
+    // widget._id = (new Date()).getTime() + "";
+    // widget.pageId = req.params.pageId;
+    //
+    // //This is for creating an image widget from uploadImage(), if there exists a query parameter in the URL when pressing
+    // //an HTML form button that would call this createWidget() method, the query parameter would be taken from the URL
+    // //and be passed in. In this case the query parameter is the URL for the uploaded image from uploadImage(), passed
+    // //in to be set as the URL for a new widget
+    // if (req.query['url']) {
+    //     widget.url = req.query['url'];
+    // }
+    //
+    // widgets.push(widget);
+    // res.send(widget);
+
     var widget = req.body;
-    widget._id = (new Date()).getTime() + "";
-    widget.pageId = req.params.pageId;
+    var pageId = req.params["pageId"];
 
-    //This is for creating an image widget from uploadImage(), if there exists an query parameter in the URL when pressing
-    //an HTML form button that would call this createWidget() method, the query parameter would be taken from the URL
-    //and be passed in. In this case the query parameter is the URL for the uploaded image from uploadImage(), passed
-    //in to be set as the URL for a new widget
-    if (req.query['url']) {
-        widget.url = req.query['url'];
-    }
+    widgetModel.findWidgetsByPageId(pageId)
+        .then(function (results) {
+            widget.index = results.length;
+            widgetModel.createWidget(pageId, widget)
+                .then(function(Widget) {
+                    res.json(Widget);
+                });
+        });
 
-    widgets.push(widget);
-    res.send(widget);
+
 }
 
 function updateWidget(req, res) {
+    // var widget = req.body;
+    // var widgetId = req.params.widgetId;
+    // for (var w in widgets) {
+    //     if (widgetId === widgets[w]._id) {
+    //         widgets[w] = widget;
+    //         res.sendStatus(200);
+    //         return;
+    //     }
+    // }
+    // res.sendStatus(404);
+
+    var widgetId = req.params["widgetId"];
     var widget = req.body;
-    var widgetId = req.params.widgetId;
-    for (var w in widgets) {
-        if (widgetId === widgets[w]._id) {
-            widgets[w] = widget;
+
+    widgetModel
+        .updateWidget(widgetId, widget)
+        .then(function (status) {
             res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+        });
 }
 
 function deleteWidget(req, res) {
-    var widgetId = req.params.widgetId;
-    var widget = widgets.find(function (widget) {
-        return widget._id === widgetId;
-    });
-    var index = widgets.indexOf(widget);
-    widgets.splice(index, 1);
-    res.sendStatus(200);
+    // var widgetId = req.params.widgetId;
+    // var widget = widgets.find(function (widget) {
+    //     return widget._id === widgetId;
+    // });
+    // var index = widgets.indexOf(widget);
+    // widgets.splice(index, 1);
+    // res.sendStatus(200);
+
+    var widgetId = req.params["widgetId"];
+
+    widgetModel
+        .deleteWidget(widgetId)
+        .then(function (status) {
+            res.sendStatus(200);
+        });
 }
 
 function findWidgetById(req, res) {
 
-    var widgetId = req.params['widgetId'];
+    // var widgetId = req.params['widgetId'];
+    //
+    // var widget = widgets.find(function (widget) {
+    //     return widget._id === widgetId;
+    // });
+    //
+    // res.send(widget);
 
-    var widget = widgets.find(function (widget) {
-        return widget._id === widgetId;
-    });
+    var widgetId = req.params["widgetId"];
 
-    res.send(widget);
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function (widget) {
+            res.json(widget);
+        });
 }
 
 function findWidgetsByPageId(req, res) {
+    //
+    // var pageId = req.params['pageId'];
+    //
+    // var results = [];
+    //
+    // for (var w in widgets) {
+    //     if (widgets[w].pageId === pageId) {
+    //         results.push(widgets[w]);
+    //     }
+    // }
+    // res.send(results);
 
-    var pageId = req.params['pageId'];
+    var pageId = req.params["pageId"];
 
-    var results = [];
-
-    for (var w in widgets) {
-        if (widgets[w].pageId === pageId) {
-            results.push(widgets[w]);
-        }
-    }
-    res.send(results);
+    widgetModel
+        .findWidgetsByPageId(pageId)
+        .then(function (results) {
+            res.json(results);
+        });
 }

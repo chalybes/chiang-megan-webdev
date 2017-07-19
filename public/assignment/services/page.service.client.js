@@ -72,7 +72,7 @@
             //
             // return results;
 
-            var url = "/api/assignment/" + websiteId;
+            var url = "/api/page/" + websiteId;
 
             return $http.get(url)
                 .then(function (response) {

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var pageSchema = mongoose.Schema({
-        website: {type: mongoose.Schema.ObjectId, ref: "userWebsiteModel"},
+        _website: {type: mongoose.Schema.ObjectId, ref: "userWebsiteModel", required: true},
         name: String,
         title: String,
         description: String,

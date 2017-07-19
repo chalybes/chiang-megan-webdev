@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
-var pageSchema = require('./page.schema.server');
+mongoose.Promise = require("q").Promise;
 
+var pageSchema = require('./page.schema.server');
 var pageModel = mongoose.model('userPageModel', pageSchema);
 
 pageModel.createPage = createPage;
@@ -11,27 +12,25 @@ pageModel.deletePage = deletePage;
 
 module.exports = pageModel;
 
-function createPage(page) {
+function createPage(websiteId, page) {
+    page._website = websiteId;
     return pageModel.create(page);
 }
 
 function findPageByWebsiteId(websiteId) {
     return pageModel.find({_website: websiteId})
+        .populate("_website")
+        .exec();
 }
 
 function findPageById(pageId) {
-    return pageModel.find({_id: pageId});
+    return pageModel.findById(pageId);
 }
 
-function updatePage(pageId, newPage) {
-    return pageModel.update({_id: pageId}, {$set: newPage});
+function updatePage(pageId, page) {
+    return pageModel.update({_id: pageId}, {$set: page});
 }
 
 function deletePage(pageId) {
-    return pageModel
-        .remove({_id: pageId})
-        .then(function (status) {
-            return websiteModel
-                .deletePage(pageId);
-        });
+    return pageModel.remove({_id: pageId});
 }
