@@ -2,17 +2,17 @@ var app = require('../express');
 var userModel = require('./models/users/user.model.server');
 
 app.get('/api/assignment/user', findUserByCredentials);
-app.get('/api/assignment/user/:userId', findUserById);
+app.get('/api/assignment/:userId', findUserById);
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
 app.delete('/api/assignment/user/:userId', deleteUser);
 
-var users = [
-    {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-    {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-    {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-];
+// var users = [
+//     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
+//     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+//     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+//     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+// ];
 
 function createUser(req, res) {
     var user = req.body;
@@ -26,12 +26,12 @@ function createUser(req, res) {
 
 function updateUser(req, res) {
     var user = req.body;
-    var userId = req.params.userId;
+    var userId = req.params["userId"];
 
     userModel
         .updateUser(userId, user)
         .then(function (status) {
-            res.sendStatus(200);
+            res.send(status);
         });
 
     // for (var u in users) {
@@ -41,7 +41,7 @@ function updateUser(req, res) {
     //         return;
     //     }
     // }
-    res.sendStatus(404);
+    // res.sendStatus(404);
 }
 
 function deleteUser(req, res) {

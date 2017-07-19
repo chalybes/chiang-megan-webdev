@@ -2,8 +2,9 @@
 // module.exports = function(app) {
 
 var app = require('../express');
+var q = require('q');
 var mongoose = require('mongoose');
-mongoose.Promise = require('q').Promise;
+
 // mongoose.connect('mongodb://localhost/test'); //tells where the mongodb connection is running
 
 var connectionString = 'mongodb://127.0.0.1:27017/test'; // for local
@@ -16,6 +17,8 @@ if(process.env.MLAB_USER) { // check if running remotely
 }
 
 mongoose.connect(connectionString);
+
+mongoose.Promise = q.Promise;
 
 require('./user.service.server');
 require('./website.service.server');

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+
 var widgetSchema = require('./widget.schema.server');
 
 var widgetModel = mongoose.model('userWidgetModel', widgetSchema);
@@ -12,15 +13,19 @@ widgetModel.deleteWidget = deleteWidget;
 module.exports = widgetModel;
 
 function createWidget(pageId, widget) {
+    widget._page = pageId;
     return widgetModel.create(widget);
 }
 
 function findWidgetByPageId(pageId) {
-    return widgetModel.find({_page: pageId});
+    return widgetModel.find({_page: pageId})
+        .populate("_page")
+        .sort({index: "ascending"})
+        .exec();
 }
 
 function findWidgetById(widgetId) {
-    return widgetModel.find({_id: widgetId});
+    return widgetModel.findById(widgetId);
 }
 
 function updateWidget(widgetId, newWidget) {

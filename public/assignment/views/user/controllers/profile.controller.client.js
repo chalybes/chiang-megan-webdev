@@ -10,25 +10,23 @@
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
 
-
         userService
             .findUserById(model.userId)
             .then(renderUser);
-
 
         function renderUser(user) {
             model.user = user;
         }
 
-        function deleteUser(user) {
-            userService
-                .deleteUser(user._id)
-                .then(function () {
-                    $location.url('/');
-                }, function () {
-                    model.error = "Unable to un-register you";
-                });
-        }
+        // function deleteUser(user) {
+        //     userService
+        //         .deleteUser(user._id)
+        //         .then(function () {
+        //             $location.url('/');
+        //         }, function () {
+        //             model.error = "Unable to un-register you";
+        //         });
+        // }
 
         function updateUser(user) {
             userService

@@ -36,7 +36,7 @@
 
         function findUserById(userId) {
 
-            var url = "/api/assignment/user/" + userId;
+            var url = "/api/assignment/" + userId;
 
             return $http.get(url)
                 .then(function (response) {

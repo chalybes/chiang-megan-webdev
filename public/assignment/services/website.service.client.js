@@ -87,7 +87,7 @@
             // }
             // return resultSet;
 
-            var url = "/api/assignment/user/" + userId + "/website"
+            var url = "/api/assignment/" + userId + "/website"
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

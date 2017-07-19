@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
+mongoose.Promise = require("q").Promise;
 
 var websiteSchema = mongoose.Schema({
-    user: {type: mongoose.Schema.ObjectId, ref: "UserModel"},
+    _user: {type: mongoose.Schema.ObjectId, ref: "UserModel", required: true},
     name: String,
     description: String,
     pages: [{type: mongoose.Schema.Types.ObjectId, ref: "userPageModel"}],

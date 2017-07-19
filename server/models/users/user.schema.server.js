@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+mongoose.Promise = require("q").Promise;
 
 var userSchema = mongoose.Schema({
     username: {type: String, require: true},
