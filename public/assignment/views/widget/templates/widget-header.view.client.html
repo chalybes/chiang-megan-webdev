@@ -20,15 +20,16 @@
 
             <label for="type">Widget Type</label>
             <input class="form-control"
-                   ng-model="model.widget.widgetType"
+                   ng-model="model.widget.type"
+                   value="HEADING"
                    placeholder="HEADING"
-                   id="type"/>
+                   id="type" readonly/>
 
-            <label for="name">Size</label>
+            <label for="size">Size</label>
             <input class="form-control"
                    ng-model="model.widget.size"
                    placeholder="Size"
-                   id="name"/>
+                   id="size"/>
 
             <label for="text">Text</label>
             <textarea id="text"

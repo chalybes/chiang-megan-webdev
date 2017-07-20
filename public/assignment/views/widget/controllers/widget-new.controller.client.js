@@ -22,10 +22,12 @@
 
         function createWidget(pageId, widget) {
             widget.pageId = model.pageId;
-            widget.widgetType = model.widget.widgetType;
+            widget.type = model.widget.type;
             widget.size = model.widget.size;
             widget.width = model.widget.width;
             widget.url = model.widget.url;
+            widget.text = model.widget.text;
+            widget.description = model.widget.description;
 
             widgetService.createWidget(pageId, widget);
             $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/page/' + model.pageId + '/widget');

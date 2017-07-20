@@ -27,7 +27,8 @@
         }
 
         function updateWebsite(website, websiteId) {
-            websiteService.updateWebsite(website, websiteId);
+            // websiteService.updateWebsite(website, websiteId);
+            websiteService.updateWebsite(odel.websiteId, model.website);
             $location.url('/user/' + model.userId + '/websites');
         }
 
