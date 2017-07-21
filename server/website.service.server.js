@@ -4,7 +4,7 @@ var websiteModel = require('./models/websites/website.model.server');
 app.get('/api/assignment/:userId/website', findAllWebsitesForUser);
 app.get("/api/assignment/website/:websiteId", findWebsiteById);
 app.post('/api/assignment/user/:userId/website', createWebsite);
-app.put("/api/assignment/website/:websiteId", updateWebsite);
+app.put('/api/assignment/website/:websiteId', updateWebsite);
 app.delete("/api/assignment/website/:websiteId", deleteWebsite);
 
 // var websites = [{ "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -62,6 +62,7 @@ function createWebsite(req, res) {
 function updateWebsite(req, res) {
     var websiteId = req.params["websiteId"];
     var website = req.body;
+
     websiteModel
         .updateWebsite(websiteId, website)
         .then(function(status) {

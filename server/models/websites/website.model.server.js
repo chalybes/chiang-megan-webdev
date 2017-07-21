@@ -43,8 +43,6 @@ function deleteWebsite(userId, websiteId) {
 }
 
 function updateWebsite(websiteId, newWebsite) {
-    // delete newWebsite.name;
-    // delete newWebsite.description;
     return websiteModel.update({_id: websiteId}, {$set: newWebsite});
 }
 

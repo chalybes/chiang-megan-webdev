@@ -19,11 +19,9 @@
         <div class="col-md-4 col-md-offset-4">
 
             <label for="type">Widget Type</label>
-            <input class="form-control"
-                   ng-model="model.widget.type"
-                   value="YOUTUBE"
-                   placeholder="YOUTUBE"
-                   id="type" readonly/>
+            <select class="form-control" ng-model="model.widget.type" id="type"/>
+            <option>YOUTUBE</option>
+            </select>
 
             <label for="width">Width</label>
             <input class="form-control"

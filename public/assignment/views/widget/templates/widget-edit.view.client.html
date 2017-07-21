@@ -17,12 +17,13 @@
 
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div ng-switch="model.widget.widgetType">
+            <div ng-switch="model.widget.type">
 
                 <label for="type">Widget Type</label>
                 <input class="form-control"
-                       ng-model="model.widget.widgetType"
-                       placeholder="facebook"
+                       ng-model="model.widget.type"
+                       placeholder="model.widget.type"
+                       value="model.widget.type"
                        id="type"/>
 
                 <label for="size" ng-switch-when="HEADING">Size</label>
@@ -46,16 +47,16 @@
                 placeholder="URL"
                 id="url"/>
 
-                <label for="description" ng-switch-when="HEADING">Text</label>
-                <textarea id="description"
+                <label for="heading" ng-switch-when="HEADING">Text</label>
+                <textarea id="heading"
                           rows="5"
                           ng-model="model.widget.text"
                           ng-switch-when="HEADING"
                           placeholder="So big it is its own country"
                           class="form-control"></textarea>
 
-                <label for="description" ng-switch-when="HTML">Text</label>
-                <textarea id="description"
+                <label for="html" ng-switch-when="HTML">Text</label>
+                <textarea id="html"
                           rows="5"
                           ng-model="model.widget.text"
                           ng-switch-when="HTML"
@@ -63,7 +64,7 @@
                           class="form-control"></textarea>
 
                 <a class="btn btn-info btn-block form-control"
-                   href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/flickrSearch"
+                   href="#!/user/{{model.userId}}/websites/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/flickrSearch"
                    ng-switch-when="IMAGE">Search</a>
 
                 <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data" ng-switch-when="IMAGE">

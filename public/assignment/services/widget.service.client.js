@@ -22,6 +22,7 @@
             // creating brand new instance because we're making a new widget
             return $http.post(url, widget)
                 .then(function (response) {
+
                     return response.data;
                 });
         }
@@ -68,6 +69,7 @@
             var url = "/api/page/" + pageId + "/widgets";
 
             return $http.get(url).then(function (response) {
+                console.log(response.data);
                 return response.data;
             });
         }

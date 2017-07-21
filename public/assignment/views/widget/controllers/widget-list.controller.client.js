@@ -15,7 +15,8 @@
         model.getWidgetUrlForType = getWidgetUrlForType;
 
         function init() {
-            // model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+
+            console.log("ALEX 1");
 
             widgetService
                 .findWidgetsByPageId(model.pageId)

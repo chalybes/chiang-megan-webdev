@@ -14,21 +14,28 @@
         model.deleteWebsite = deleteWebsite;
 
         function init() {
-            model.websites = websiteService.findAllWebsitesForUser(model.userId);
-            model.website = websiteService.findWebsiteById(model.websiteId);
+            websiteService.findAllWebsitesForUser(model.userId).then(function (websites) {
+                model.websites = websites;
+            });
+
+            websiteService.findWebsiteById(model.websiteId).then(function (website) {
+                model.website = website;
+            });
         }
 
         init();
 
         function createWebsite(website) {
-            website.developerId = model.userId;
+            website.userId = model.userId;
             websiteService.createWebsite(website);
             $location.url('/user/' + model.userId + '/websites');
         }
 
-        function updateWebsite(website, websiteId) {
-            // websiteService.updateWebsite(website, websiteId);
-            websiteService.updateWebsite(odel.websiteId, model.website);
+        function updateWebsite(websiteId, website) {
+            websiteService
+                .updateWebsite(websiteId, website).then(function () {
+                console.log("Website updated successfully");
+            });
             $location.url('/user/' + model.userId + '/websites');
         }
 

@@ -19,11 +19,9 @@
         <div class="col-md-4 col-md-offset-4">
 
             <label for="type">Widget Type</label>
-            <input class="form-control"
-                   ng-model="model.widget.type"
-                   value="HTML"
-                   placeholder="HTML"
-                   id="type" readonly/>
+            <select class="form-control" ng-model="model.widget.type" id="type"/>
+            <option>HTML</option>
+            </select>
 
             <label for="text">Text</label>
             <textarea id="text"
