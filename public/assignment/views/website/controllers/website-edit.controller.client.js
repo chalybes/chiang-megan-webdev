@@ -31,11 +31,8 @@
             $location.url('/user/' + model.userId + '/websites');
         }
 
-        function updateWebsite(websiteId, website) {
-            websiteService
-                .updateWebsite(websiteId, website).then(function () {
-                console.log("Website updated successfully");
-            });
+        function updateWebsite(website, websiteId) {
+            websiteService.updateWebsite(website, websiteId);
             $location.url('/user/' + model.userId + '/websites');
         }
 

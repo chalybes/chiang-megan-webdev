@@ -12,6 +12,7 @@ app.get('/api/page/:pageId/widgets', findWidgetsByPageId);
 app.post('/api/create/:pageId/widget', createWidget);
 app.put('/api/assignment/widget/:widgetId', updateWidget);
 app.delete('/api/assignment/widget/:widgetId', deleteWidget);
+app.put('/page/:pageId/widget?start=index1&end=index2', sortWidgets);
 
 
 // var widgets = [{ "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -120,5 +121,17 @@ function findWidgetById(req, res) {
         .findWidgetById(widgetId)
         .then(function (widget) {
             res.json(widget);
+        });
+}
+
+function sortWidgets(req, res) {
+
+    var pageId = req.params["pageId"];
+    var index1 = req.params["index1"];
+    var index2 = req.params["index2"];
+
+    widgetModel.sortWidgets(pageId, index1, index2)
+        .then(function() {
+            res.sendStatus(200);
         });
 }

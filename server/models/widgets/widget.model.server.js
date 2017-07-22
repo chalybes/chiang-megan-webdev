@@ -10,6 +10,7 @@ widgetModel.findWidgetsByPageId = findWidgetsByPageId;
 widgetModel.findWidgetById = findWidgetById;
 widgetModel.updateWidget = updateWidget;
 widgetModel.deleteWidget = deleteWidget;
+widgetModel.sortWidgets = sortWidgets;
 
 module.exports = widgetModel;
 
@@ -35,4 +36,28 @@ function updateWidget(widgetId, newWidget) {
 
 function deleteWidget(widgetId) {
     return widgetModel.remove({_id: widgetId});
+}
+
+function sortWidgets(pageId, start, end) {
+    return widgetModel.find({_page: pageId}, function (error, widgets) {
+
+        widgets.forEach(function (widget) {
+            if (widget.index == start) {
+                widget.index = end;
+                widget.save();
+            }
+            else if (end > start) {
+                if (widget.index <= end && widget.index > start) {
+                    widget.index = widget.index - 1;
+                    widget.save();
+                }
+            }
+            else { // end < start
+                if (widget.index >= end && widget.index < start) {
+                    widget.index = widget.index + 1;
+                    widget.save();
+                }
+            }
+        });
+    }).sort({order: 1});
 }

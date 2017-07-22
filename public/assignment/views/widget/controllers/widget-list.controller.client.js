@@ -3,7 +3,7 @@
         .module('WAM')
         .controller('widgetListController', widgetListController);
 
-    function widgetListController($sce, $routeParams, widgetService) {
+    function widgetListController($sce, $routeParams, widgetService, $scope) {
 
         var model = this;
 
@@ -15,8 +15,6 @@
         model.getWidgetUrlForType = getWidgetUrlForType;
 
         function init() {
-
-            console.log("ALEX 1");
 
             widgetService
                 .findWidgetsByPageId(model.pageId)

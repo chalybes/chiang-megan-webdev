@@ -28,8 +28,6 @@
                 .then(function (widget) {
                     model.widget = widget;
                 });
-            // model.widgets = widgetService.findWidgetsByPageId(model.pageId);
-            // model.widget = widgetService.findWidgetById(model.widgetId);
         }
 
         init();

@@ -10,7 +10,8 @@
             findWidgetsByPageId: findWidgetsByPageId,
             findWidgetById: findWidgetById,
             updateWidget: updateWidget,
-            deleteWidget: deleteWidget
+            deleteWidget: deleteWidget,
+            sortWidgets: sortWidgets
         };
 
         function createWidget(pageId, widget) {
@@ -84,6 +85,14 @@
             return $http.get(url).then(function (response) {
                     return response.data;
             });
+        }
+
+        function sortWidgets(pageId, index1, index2) {
+            var url = "/page/" + pageId + "/widget?start=" + index1 + "&end=" + index2;
+
+            return $http.put(url).then(function (response) {
+                return response.data;
+            })
         }
 
     }
