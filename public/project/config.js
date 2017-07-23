@@ -9,6 +9,11 @@
                 templateUrl: 'home.html',
                 controller: 'CYOcontroller',
                 controllerAs: 'model'
+            })
+            .when('/request', {
+                templateUrl: 'request.html',
+                controller: 'requestController',
+                controllerAs: 'model'
             });
     }
 })();

@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Request Page</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../assignment/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="../assignment/vendor/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
-    <link href="./css/requeststyles.css" rel="stylesheet">
-</head>
-<body>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <form>
                 <label for="yname">Your name</label>
-                <input class="form-control" type="text" id="yname" placeholder="Your name">
+                <input class="form-control" ng-model="model.request.personame" type="text" id="yname" placeholder="Your name">
 
-                <label for="room">What room?</label>
-                <input class="form-control" type="text" id="room" placeholder="Specify what room they will be housed">
+                <label for="room">How many?</label>
+                <input class="form-control" ng-model="model.request.amount" type="text" id="amount" placeholder="How many animals?">
+
+                <label for="room">What facility room?</label>
+                <input class="form-control" ng-model="model.request.room" type="text" id="room" placeholder="Specify what room they will be housed">
+
+                <label for="date">Time frame?</label>
+                <input class="form-control" ng-model="model.request.date" type="text" id="date" placeholder="Specify the date you need animals by">
 
                 <label for="mline">Mouse Line</label>
-                <select class="form-control" id="mline">
+                <select class="form-control" ng-model="model.request.mline" id="mline">
                     <option value="agrpv2">AgRPCre(ver2)</option>
                     <option value="brs3">Brs3Cre</option>
                     <option value="calca">CalcaCre</option>
@@ -34,11 +27,8 @@
                     <option value="mox2">Mox2Cre</option>
                 </select>
 
-                <input class="form-control btn btn-block btn-success" type="submit" value="Submit">
+                <a ng-click="model.prepareForCalendar(request)" class="form-control btn btn-block btn-success">Google Calendar Reminder of Your Request</a>
             </form>
         </div>
     </div>
 </div>
-
-</body>
-</html>

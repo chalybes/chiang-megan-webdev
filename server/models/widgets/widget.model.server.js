@@ -42,22 +42,8 @@ function sortWidgets(pageId, start, end) {
     return widgetModel.find({_page: pageId}, function (error, widgets) {
 
         widgets.forEach(function (widget) {
-            if (widget.index == start) {
-                widget.index = end;
-                widget.save();
-            }
-            else if (end > start) {
-                if (widget.index <= end && widget.index > start) {
-                    widget.index = widget.index - 1;
-                    widget.save();
-                }
-            }
-            else { // end < start
-                if (widget.index >= end && widget.index < start) {
-                    widget.index = widget.index + 1;
-                    widget.save();
-                }
-            }
+            widget.index = end;
+            widget.save();
         });
-    }).sort({order: 1});
+    }).sort({index: 1});
 }

@@ -11,20 +11,26 @@
 
             $(element).sortable({
 
-                // start: function (event, ui) {
-                //     ui.item.startIndex = ui.item.index();
-                // },
-                //
-                // stop: function (event, ui) {
-                //     widgetService
-                //         .sortWidgets(pageId, ui.item.startIndex, ui.item.index());
-                // }
+                start: function (event, ui) {
+                    ui.item.startIndex = ui.item.index();
+                },
 
-                update: function(event, ui) {
-                    var widgetOrder = $(this).sortable('toArray').toString();
-                    
+                stop: function (event, ui) {
+                    widgetService
+                        .sortWidgets(pageId, ui.item.startIndex, ui.item.index());
                 }
+
+                // create: refreshPositions,
+                // update: refreshPositions
+
             });
+
+            // function refreshPositions() {
+            //     $(element).each(function() {
+            //         var idx = $(this).index();
+            //         $(this).val(idx);
+            //     });
+            // }
         }
 
         return {
