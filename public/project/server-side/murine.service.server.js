@@ -1,5 +1,5 @@
 var app = require('../express');
-var murineModel = require('./servermodels/murine.model.server');
+var murineModel = require('./models/murine.model.server');
 
 app.get('/api/allines', findAllLines);
 app.post('/api/newLine', createLine);

@@ -1,3 +1,4 @@
+var express = require('../../express');
 
 var fs = require('fs');
 var readline = require('readline');
@@ -8,8 +9,8 @@ var googleAuth = require('google-auth-library');
 // at ~/.credentials/calendar-nodejs-quickstart.json
 var SCOPES = ['https://www.googleapis.com/auth/calendar'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
-    process.env.USERPROFILE) + '/.credentials/';
-var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
+    process.env.USERPROFILE);
+var TOKEN_PATH = TOKEN_DIR;
 
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -17,9 +18,6 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         console.log('Error loading client secret file: ' + err);
         return;
     }
-    // Authorize a client with the loaded credentials, then call the
-    // Google Calendar API.
-    authorize(JSON.parse(content), listEvents);
 });
 
 /**
@@ -96,35 +94,37 @@ function storeToken(token) {
     console.log('Token stored to ' + TOKEN_PATH);
 }
 
-/**
- * Lists the next 10 events on the user's primary calendar.
- *
- * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
- */
-function listEvents(auth) {
-    var calendar = google.calendar('v3');
-    calendar.events.list({
-        auth: auth,
-        calendarId: 'primary',
-        timeMin: (new Date()).toISOString(),
-        maxResults: 10,
-        singleEvents: true,
-        orderBy: 'startTime'
-    }, function(err, response) {
-        if (err) {
-            console.log('The API returned an error: ' + err);
-            return;
-        }
-        var events = response.items;
-        if (events.length == 0) {
-            console.log('No upcoming events found.');
-        } else {
-            console.log('Upcoming 10 events:');
-            for (var i = 0; i < events.length; i++) {
-                var event = events[i];
-                var start = event.start.dateTime || event.start.date;
-                console.log('%s - %s', start, event.summary);
-            }
-        }
-    });
-}
+// Refer to the JavaScript quickstart on how to setup the environment:
+// https://developers.google.com/google-apps/calendar/quickstart/js
+// Change the scope to 'https://www.googleapis.com/auth/calendar' and delete any
+// stored credentials.
+
+var event = {
+    'summary': 'Delivery date for' + request.mline,
+    'location': request.room,
+    'description': request.amount + request.mline,
+    'start': {
+        'dateTime': '2015-05-28T09:00:00-07:00',
+        'timeZone': 'America/Los_Angeles'
+    },
+    'end': {
+        'dateTime': '2015-05-28T17:00:00-07:00',
+        'timeZone': 'America/Los_Angeles'
+    },
+    'reminders': {
+        'useDefault': false,
+        'overrides': [
+            {'method': 'email', 'minutes': 24 * 60},
+            {'method': 'popup', 'minutes': 10}
+        ]
+    }
+};
+
+var request = gapi.client.calendar.events.insert({
+    'calendarId': 'primary',
+    'resource': event
+});
+
+request.execute(function(event) {
+    appendPre('Event created: ' + event.htmlLink);
+});

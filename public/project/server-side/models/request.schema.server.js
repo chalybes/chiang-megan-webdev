@@ -1,10 +1,13 @@
 var mongoose = require('mongoose');
 
 var requestSchema = mongoose.Schema({
-        strain: {type: String, require: true},
+        username: String,
+        strain: String,
         amount: Number,
         gender: {type: String, enum: ['male', 'female']},
-        deadline: {type: Date}},
-        {collection: "mousequest"});
+        deadline: {type: Date},
+        room: String,
+        delivered: Boolean},
+        {collection: "order"});
 
 module.exports = requestSchema;

@@ -4,19 +4,19 @@
         <div class="col-md-4 col-md-offset-4">
             <form>
                 <label for="yname">Your name</label>
-                <input class="form-control" ng-model="model.request.personame" type="text" id="yname" placeholder="Your name">
+                <input class="form-control" ng-model="model.mrequest.personame" type="text" id="yname" placeholder="Your name">
 
                 <label for="room">How many?</label>
-                <input class="form-control" ng-model="model.request.amount" type="text" id="amount" placeholder="How many animals?">
+                <input class="form-control" ng-model="model.mrequest.amount" type="text" id="amount" placeholder="How many animals?">
 
                 <label for="room">What facility room?</label>
-                <input class="form-control" ng-model="model.request.room" type="text" id="room" placeholder="Specify what room they will be housed">
+                <input class="form-control" ng-model="model.mrequest.room" type="text" id="room" placeholder="Specify what room they will be housed">
 
                 <label for="date">Time frame?</label>
-                <input class="form-control" ng-model="model.request.date" type="text" id="date" placeholder="Specify the date you need animals by">
+                <input class="form-control" ng-model="model.mrequest.date" type="text" id="date" placeholder="Specify the date you need animals by">
 
                 <label for="mline">Mouse Line</label>
-                <select class="form-control" ng-model="model.request.mline" id="mline">
+                <select class="form-control" ng-model="model.mrequest.mline" id="mline">
                     <option value="agrpv2">AgRPCre(ver2)</option>
                     <option value="brs3">Brs3Cre</option>
                     <option value="calca">CalcaCre</option>
@@ -27,7 +27,8 @@
                     <option value="mox2">Mox2Cre</option>
                 </select>
 
-                <a ng-click="model.prepareForCalendar(request)" class="form-control btn btn-block btn-success">Google Calendar Reminder of Your Request</a>
+                <a ng-click="model.requestoDB(mrequest)" class="form-control btn btn-block btn-primary">Place Your Request</a>
+                <a ng-click="model.prepareForCalendar(mrequest)" class="form-control btn btn-block btn-success">Google Calendar Reminder of Your Request</a>
             </form>
         </div>
     </div>

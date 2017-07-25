@@ -6,13 +6,18 @@
     function configuration($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'home.html',
+                templateUrl: 'views/linesList/home.html',
                 controller: 'CYOcontroller',
                 controllerAs: 'model'
             })
             .when('/request', {
-                templateUrl: 'request.html',
+                templateUrl: 'views/requestPage/request.html',
                 controller: 'requestController',
+                controllerAs: 'model'
+            })
+            .when('/listOfRequests', {
+                templateUrl: 'views/placedRequests/listOfRequests.html',
+                controller: 'listOfRequestsController',
                 controllerAs: 'model'
             });
     }

@@ -32,9 +32,11 @@
 
             function login(found) {
                 if (found !== null) {
+
                     $location.url('/user/' + found._id);
-                    // $scope.message = "Welcome " + username;
+
                 } else {
+
                     model.message = "Username " + username + " not found, please try again";
                 }
             }

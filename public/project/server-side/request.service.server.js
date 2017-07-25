@@ -1,5 +1,5 @@
 var app = require('../express');
-var requestModel = require('./servermodels/murine.model.server');
+var requestModel = require('./models/murine.model.server');
 
 app.get('/api/assignment/:userId', findAllRequests);
 app.post('/api/order', createRequest);

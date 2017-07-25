@@ -33,12 +33,6 @@ function findAllWebsitesForUser(userId) {
 }
 
 function deleteWebsite(userId, websiteId) {
-    // return websiteModel
-    //     .remove({_id: websiteId})
-    //     .then(function (status) {
-    //         return userModel
-    //             .deleteWebsite(userId, websiteId);
-    //     });
     return websiteModel.remove({_id: websiteId});
 }
 
@@ -47,5 +41,5 @@ function updateWebsite(websiteId, newWebsite) {
 }
 
 function findWebsiteById(websiteId) {
-    return websiteModel.find({_id: websiteId});
+    return websiteModel.findById({_id: websiteId});
 }
