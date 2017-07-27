@@ -15,6 +15,7 @@ userModel.updateUser = updateUser;
 module.exports = userModel;
 
 function createUser(user) {
+    user.roles = ['USER'];
     return userModel.create(user);
 }
 

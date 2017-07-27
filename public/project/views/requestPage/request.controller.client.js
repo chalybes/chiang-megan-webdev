@@ -10,21 +10,35 @@
         // var cal = new CalendarAPI(CONFIG);
 
         var model = this;
+        model.createRequest = createRequest;
 
-        function prepareForCalendar(mrequest) {
+        function createRequest(orderRequest) {
 
-            var mrequest = model.mrequest;
+            if (orderRequest !== null) {
+                return requestService
+                    .createRequest(orderRequest)
+                    .then(function (order) {
+                        $location.url('/listOfRequests');
+                    });
+            } else {
+                model.error = "Please fill out the request";
+            }
+        }
 
-            var resource = {
-                'summary': mrequest.mline,
-                'location': mrequest.room,
-                'start': {
-                    dateTime: new Date()// events starts time
-                },
-                'end': {
-                    dateTime: new Date() // events ends time
-                }
-            };
+        // function prepareForCalendar(mrequest) {
+        //
+        //     var mrequest = model.mrequest;
+        //
+        //     var resource = {
+        //         'summary': mrequest.mline,
+        //         'location': mrequest.room,
+        //         'start': {
+        //             dateTime: new Date()// events starts time
+        //         },
+        //         'end': {
+        //             dateTime: new Date() // events ends time
+        //         }
+        //     };
 
             // var event = {
             //     'summary': 'Delivery date for' + request.mline,
@@ -47,11 +61,11 @@
             //     }
             // };
 
-            makevent(resource);
-        }
+        //     makevent(resource);
+        // }
 
 
-        function makevent(resource) {
+        // function makevent(resource) {
             // var calendar = google.calendar('v3');
             //
             // calendar.events.insert({
@@ -66,21 +80,21 @@
             //         console.log(res, 'Event created:', res.htmlLink);
             //     });
 
-            var calendar = google.calendar('v3');
-
-            calendar.events.insert({
-                auth: oauth2Client,
-                calendarId: 'primary',
-                sendNotifications: true,
-                resource: resource
-            }, function(err,resp) {
-                if (err) {
-                    console.log('There was an error : ' + err);
-                    return;
-                }
-                console.log(resp,'Event created:', resp.htmlLink);
-            });
-        }
+        //     var calendar = google.calendar('v3');
+        //
+        //     calendar.events.insert({
+        //         auth: oauth2Client,
+        //         calendarId: 'primary',
+        //         sendNotifications: true,
+        //         resource: resource
+        //     }, function(err,resp) {
+        //         if (err) {
+        //             console.log('There was an error : ' + err);
+        //             return;
+        //         }
+        //         console.log(resp,'Event created:', resp.htmlLink);
+        //     });
+        // }
 
     }
 })();

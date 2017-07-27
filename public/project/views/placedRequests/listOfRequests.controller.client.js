@@ -15,29 +15,13 @@
 
         model.peepsRequests = peepsRequests;
 
-        model.createRequest = createRequest;
-
         function init() {
             requestService
-                .findAllRequests
+                .findAllRequests()
                 .then(function (orderRequests) {
                     model.orderRequests = orderRequests;
                 })
         }
-
-        function createRequest(orderRequest) {
-
-            if (orderRequest !== null) {
-                return requestService
-                    .createRequest(orderRequest)
-                    .then(function (order) {
-                        $location.url('/');
-                    });
-            } else {
-                model.error = "Please fill out the request";
-            }
-        }
-
 
     }
 

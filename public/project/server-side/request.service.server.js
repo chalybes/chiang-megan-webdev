@@ -1,17 +1,10 @@
 var app = require('../express');
 var requestModel = require('./models/murine.model.server');
 
-app.get('/api/assignment/:userId', findAllRequests);
-app.post('/api/order', createRequest);
-app.put('/api/updateOrder', updateRequest);
-app.delete('/api/cancel', deleteRequest);
-
-// var users = [
-//     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-//     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-//     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-//     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-// ];
+app.get('/mouseOrder/all', findAllRequests);
+app.post('/mouseOrder', createRequest);
+app.put('/mouseOrder/update', updateRequest);
+app.delete('/mouseOrder/delete', deleteRequest);
 
 function createRequest(req, res) {
     var line = req.body;
@@ -43,10 +36,10 @@ function deleteRequest(req, res) {
 }
 
 function findAllRequests(req, res) {
-    var lineId = req.params["lineId"];
 
-    requestModel.findLineRequests(lineId).then(function (lineRequests) {
-        res.send(lineRequests);
+    requestModel.findLineRequests()
+        .then(function (orderRequests) {
+            res.send(orderRequests);
     });
 }
 

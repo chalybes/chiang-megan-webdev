@@ -3,30 +3,36 @@
         .module('WAM')
         .controller('profileController', profileController);
 
-    function profileController($location, $routeParams, userService) {
+    function profileController($location, $routeParams, userService, currentUser) {
 
         var model = this;
-        model.userId = $routeParams['userId'];
+        currentUser = model.user;
+        // model.userId = $routeParams['userId']; no longer necessary
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
+        model.logout = logout;
 
-        userService
-            .findUserById(model.userId)
-            .then(renderUser);
+        // Methods below no longer needed because now Passport can resolve user info and pass it
+        // userService
+        //     .findUserById(model.userId)
+        //     .then(renderUser);
 
-        function renderUser(user) {
-            model.user = user;
-        }
-
-        // function deleteUser(user) {
-        //     userService
-        //         .deleteUser(user._id)
-        //         .then(function () {
-        //             $location.url('/');
-        //         }, function () {
-        //             model.error = "Unable to un-register you";
-        //         });
+        // function init() {
+        //     renderUser(currentUser);
         // }
+        //
+        // init();
+        //
+        // function renderUser(user) {
+        //     model.user = user;
+        // }
+
+        function logout() {
+            userService.logout()
+                .then(function () {
+                    $location.url('/login');
+                });
+        }
 
         function updateUser(user) {
             userService
@@ -43,6 +49,16 @@
                     $location.url('/login');
                 });
         }
+
+        // function deleteUser(user) {
+        //     userService
+        //         .deleteUser(user._id)
+        //         .then(function () {
+        //             $location.url('/');
+        //         }, function () {
+        //             model.error = "Unable to un-register you";
+        //         });
+        // }
 
     }
 

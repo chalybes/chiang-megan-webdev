@@ -6,7 +6,12 @@
     function configuration($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/linesList/home.html',
+                templateUrl: 'views/linesList/listOfLines.html',
+                controller: 'CYOcontroller',
+                controllerAs: 'model'
+            })
+            .when('/listOfLines', {
+                templateUrl: 'views/linesList/listOfLines.html',
                 controller: 'CYOcontroller',
                 controllerAs: 'model'
             })

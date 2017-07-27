@@ -23,20 +23,14 @@
             } else {
                 var user = { username: username,
                              password: password };
-                // model.message = user;
-                return userService
-                    .createUser(user)
+
+                userService
+                    .register(user)
                     .then(function (user) {
-                        $location.url('/user/' + user._id + '/websites')
+                        $location.url('/profile')
                     });
             }
 
-            // if (found !== null) {
-            //     $location.url('/user/' + found._id);
-            //     // $scope.message = "Welcome " + username;
-            // } else {
-            //     model.message = "Username " + username + " not found, please try again";
-            // }
         }
     }
 

@@ -22,6 +22,6 @@ function deleteLineRequest(lineId) {
     return requestModel.remove({_id: lineId});
 }
 
-function findLineRequests(lineId) {
-    return requestModel.find({_id: lineId});
+function findLineRequests() {
+    return requestModel.find();
 }

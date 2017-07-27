@@ -1,7 +1,7 @@
 //This file is the entry point to all server-side logic required to run the assignment MEAN app
 // module.exports = function(app) {
 
-var app = require('../express');
+var app = require('../../../express');
 var q = require('q');
 var mongoose = require('mongoose');
 
@@ -20,29 +20,9 @@ mongoose.connect(connectionString);
 
 mongoose.Promise = q.Promise;
 
-require('./user.service.server');
-require('./website.service.server');
-require('./page.service.server');
-require('./widget.service.server');
+require('./murine.service.server');
+require('./request.service.server');
 
-app.get('/goodbye', sayHello);
-app.get('/websites', sendWebsites);
-
-// req takes in request from client, res is the response to client
-function sendWebsites(req, res) {
-    var websites = [
-        {name: 'facebook'},
-        {name: 'linkedin'},
-        {name: 'twitter'}
-    ];
-    res.send(websites);
-}
-
-function sayHello() {
-    console.log('Goodbye');
-}
-
-// }
 
 
 
