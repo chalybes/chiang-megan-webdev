@@ -1,0 +1,53 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Edit Page
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="col-md-4 col-md-offset-4">
+
+        <label for="name">Name</label>
+        <input class="form-control"
+               ng-model="model.page.name"
+               placeholder="facebook"
+               id="name"/>
+
+        <label for="description">Description</label>
+        <textarea id="description"
+                  rows="5"
+                  ng-model="model.page.description"
+                  placeholder="So big it is its own country"
+                  class="form-control"></textarea>
+
+        <a ng-click="model.updatePage(model.page, model.pageId)"
+           class="btn btn-block btn-success">
+            Update
+        </a>
+        <a ng-click="model.deletePage(model.pageId)"
+           class="btn btn-block btn-danger">
+            Delete
+        </a>
+    </div>
+</div>
+
+<nav role="navigation" class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#!/user/userId/"><span class="glyphicon glyphicon-user"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

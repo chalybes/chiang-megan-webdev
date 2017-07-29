@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                New HTML
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+
+            <label for="type">Widget Type</label>
+            <select class="form-control" ng-model="model.widget.type" id="type"/>
+            <option>HTML</option>
+            </select>
+
+            <label for="text">Text</label>
+            <textarea id="text"
+                      rows="3"
+                      ng-model="model.widget.text"
+                      placeholder="Write your text"
+                      class="form-control"></textarea>
+
+            <a ng-click="model.createWidget(model.pageId, model.widget)"
+               class="btn btn-block btn-success">
+                Create
+            </a>
+        </div>
+    </div>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

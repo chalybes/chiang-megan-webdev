@@ -1,0 +1,72 @@
+.form-control {
+    margin-bottom: 5px;
+}
+
+/*.centered {*/
+    /*margin: auto;*/
+    /*text-align: justify;*/
+/*}*/
+
+/*.fixed-panel {*/
+    /*height: 300px;*/
+/*}*/
+
+li.borderless {
+    border: none;
+}
+
+.glyphicon-chevron-left:before {
+    margin-right: 10px;
+}
+
+.glyphicon-plus, .glyphicon-ok {
+    color: #ffffff;
+}
+
+.glyphicon-plus.newpagecustom, .glyphicon-cog.newpagecustom, .glyphicon-ok.newpagecustom, .glyphicon-chevron-left.newpagecustom {
+    color: #5a5959;
+}
+
+
+body {
+    padding-top: 36px;
+    margin: 20px;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+.panel {
+    border-color: #cdcdcd;
+}
+
+.panel-heading.customhead {
+    background: #eae9e8;
+    color: #5a5959;
+    border: #cdcdcd;
+}
+
+@media (orientation:landscape) {
+
+    .hide-on-portrait {
+        display: none;
+    }
+}
+
+.wd-widget {
+    margin-bottom: 10px;
+}
+
+.wd-widget > img {
+    width: 100%;
+}
+
+.wd-widget > .wd-widget-toolbar {
+    position: absolute;
+    right: 15px;
+    background: white;
+    opacity: 0.9;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
+}

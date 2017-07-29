@@ -1,0 +1,26 @@
+<body>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Mouse Line</th>
+        <th>Amount</th>
+        <th>Gender</th>
+        <th>Room</th>
+        <th>Dropped off?</th>
+        <th><a href="#!/request"><span class="glyphicon glyphicon-plus"></span></a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="order in model.peepsRequests">
+        <td>{{order.name}}</td>
+        <td>{{order.mouseline}}</td>
+        <td>{{order.amount}}</td>
+        <td>{{order.gender}}</td>
+        <td>{{order.room}}</td>
+        <td>{{order.delivered}}</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>

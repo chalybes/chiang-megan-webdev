@@ -1,0 +1,104 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Edit Widget
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div ng-switch="model.widget.type">
+
+                <label for="type">Widget Type</label>
+                <input class="form-control"
+                       ng-model="model.widget.type"
+                       placeholder="model.widget.type"
+                       value="model.widget.type"
+                       id="type"/>
+
+                <label for="size" ng-switch-when="HEADING">Size</label>
+                <input class="form-control"
+                       ng-model="model.widget.size"
+                       ng-switch-when="HEADING"
+                       placeholder="Size"
+                       id="size"/>
+
+                <label for="width" ng-switch-when="YOUTUBE">Width</label>
+                <input class="form-control"
+                       ng-model="model.widget.width"
+                       ng-switch-when="YOUTUBE"
+                       placeholder="Width"
+                       id="width"/>
+
+                <label for="url" ng-switch-when="IMAGE">Url</label>
+                <input class="form-control"
+                ng-model="model.widget.url"
+                ng-switch-when="IMAGE"
+                placeholder="URL"
+                id="url"/>
+
+                <label for="heading" ng-switch-when="HEADING">Text</label>
+                <textarea id="heading"
+                          rows="5"
+                          ng-model="model.widget.text"
+                          ng-switch-when="HEADING"
+                          placeholder="So big it is its own country"
+                          class="form-control"></textarea>
+
+                <label for="html" ng-switch-when="HTML">Text</label>
+                <textarea id="html"
+                          rows="5"
+                          ng-model="model.widget.text"
+                          ng-switch-when="HTML"
+                          placeholder="So big it is its own country"
+                          class="form-control"></textarea>
+
+                <a class="btn btn-info btn-block form-control"
+                   href="#!/user/{{model.userId}}/websites/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/flickrSearch"
+                   ng-switch-when="IMAGE">Search</a>
+
+                <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data" ng-switch-when="IMAGE">
+                    <input  name="myFile"    type="file" class="form-control"/>
+                    <input  name="width"       value="{{model.widget.width}}" style="display: none"/>
+                    <input  name="userId"      value="{{model.userId}}"       style="display: none"/>
+                    <input  name="websiteId"   value="{{model.websiteId}}"    style="display: none"/>
+                    <input  name="pageId"      value="{{model.pageId}}"       style="display: none"/>
+                    <input  name="widgetId"    value="{{model.widgetId}}"     style="display: none"/>
+                    <button type="submit"    class="btn btn-block btn-primary form-control">Upload Image</button>
+                </form>
+
+                <a ng-click="model.updateWidget(model.widgetId, model.widget)"
+                   class="btn btn-block btn-success">
+                    Update
+                </a>
+
+                <a ng-click="model.deleteWidget(model.widgetId)"
+                   class="btn btn-block btn-danger">
+                    Delete
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav role="navigation" class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#!/user/userId/"><span class="glyphicon glyphicon-user"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
