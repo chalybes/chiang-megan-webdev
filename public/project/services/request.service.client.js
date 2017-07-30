@@ -14,7 +14,9 @@
 
         function createRequest(orderRequest) {
 
-            return $http.post('/mouseOrder/', orderRequest)
+            var url = "/mouseOrder/order";
+
+            return $http.post(url, orderRequest)
                 .then(function (response) {
                     return response.data;
                 });

@@ -83,16 +83,6 @@
                 .then(function (response) {
                     return response.data;
                 });
-
-            // for (var u in users) {
-            //
-            //     var user = users[u];
-            //
-            //     if (user.username === username && user.password === password) {
-            //         return user;
-            //     }
-            // }
-            // return null;
         }
 
         function findUserById(userId) {
@@ -107,14 +97,13 @@
 
         function createUser(user) {
 
-            var url = "/api/assignment/user"
+            var url = "/api/assignment/user";
+
             // creating brand new instance because we're making a new user
             return $http.post(url, user)
                 .then(function (response) {
                     return response.data;
                 });
-            // user._id = (new Date()).getTime() + "";
-            // users.push(user);
         }
 
         function updateUser(userId, user) {
@@ -123,7 +112,7 @@
             return $http.put(url, user)
                 .then(function (response) {
                     return response.data;
-                })
+                });
         }
 
         function deleteUser(userId) {
@@ -141,17 +130,7 @@
                 });
         }
 
-        // MIGHT NEED TO WORK ON THIS --- MAKE IT SERVER-SIDE!
         function findUserByUsername(username) {
-            // var user =  users.find(function (user) {
-            //     return user.username === username;
-            // });
-            //
-            // if (typeof user === 'undefined') {
-            //     return null;
-            // } else {
-            //     return user;
-            // }
 
             var url = "/api/assignment/graduate/user?username=" + username;
             return $http.get(url)
@@ -159,6 +138,5 @@
                     return response.data;
                 });
         }
-
     }
 })();

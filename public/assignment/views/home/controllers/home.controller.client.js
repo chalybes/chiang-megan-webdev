@@ -3,12 +3,12 @@
         .module('WAM')
         .controller('homeController', homeController);
 
-    // function homeController(currentUser) {
-    function homeController() {
+    function homeController(currentUser) {
+    // function homeController() {
 
         var model = this;
 
-        // model.currentUser = currentUser;
+        model.currentUser = currentUser;
 
     }
 

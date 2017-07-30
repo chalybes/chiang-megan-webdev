@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
+mongoose.Promise = require("q").Promise;
 
 var requestSchema = require('./request.schema.server');
 var requestModel = mongoose.model('RequestModel', requestSchema);
 
-requestModel.createLine = createLineRequest;
-requestModel.deleteLine = deleteLineRequest;
-requestModel.updateLine = updateLineRequest;
-requestModel.findLinesById = findLineRequests;
+requestModel.createLineRequest = createLineRequest;
+requestModel.deleteLineRequest = deleteLineRequest;
+requestModel.updateLineRequest = updateLineRequest;
+requestModel.findLineRequests = findLineRequests;
 
 module.exports = requestModel;
 

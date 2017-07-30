@@ -1,4 +1,4 @@
-var app = require('../express');
+var app = require('../../../express.js');
 var murineModel = require('./models/murine.model.server');
 
 app.get('/api/allines', findAllLines);

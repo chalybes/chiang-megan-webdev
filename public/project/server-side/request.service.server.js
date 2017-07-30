@@ -1,8 +1,8 @@
-var app = require('../express');
-var requestModel = require('./models/murine.model.server');
+var app = require('../../../express');
+var requestModel = require('./models/request.model.server');
 
 app.get('/mouseOrder/all', findAllRequests);
-app.post('/mouseOrder', createRequest);
+app.post('/mouseOrder/order', createRequest);
 app.put('/mouseOrder/update', updateRequest);
 app.delete('/mouseOrder/delete', deleteRequest);
 
