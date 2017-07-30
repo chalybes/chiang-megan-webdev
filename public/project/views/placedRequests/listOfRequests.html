@@ -13,16 +13,29 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="order in model.peepsRequests">
-        <td>{{order.name}}</td>
-        <td>{{order.mouseline}}</td>
+    <tr ng-repeat="order in model.orderRequests">
+        <td>{{order.personame}}</td>
+        <td>{{order.strain}}</td>
         <td>{{order.amount}}</td>
         <td>{{order.gender}}</td>
         <td>{{order.room}}</td>
         <td>{{order.deadline}}</td>
         <td>{{order.delivered}}</td>
+        <td></td>
     </tr>
     </tbody>
 </table>
-
 </body>
+
+<nav role="navigation" class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#!/"><span class="glyphicon glyphicon-home">Home</span></a></li>
+                <li><a href="#!/listOfLines"><span class="glyphicon glyphicon-th-list">Lines List</span></a></li>
+                <li><a href="#!/listOfRequests"><span class="glyphicon glyphicon-tag">Requests List</span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

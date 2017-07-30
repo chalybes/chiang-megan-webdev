@@ -15,13 +15,15 @@
 
         model.peepsRequests = peepsRequests;
 
-        // function init() {
-        //     requestService
-        //         .findAllRequests()
-        //         .then(function (orderRequests) {
-        //             model.orderRequests = orderRequests;
-        //         })
-        // }
+        function init() {
+            requestService
+                .findAllRequests()
+                .then(function (orderRequests) {
+                    model.orderRequests = orderRequests;
+                });
+        }
+
+        init();
 
     }
 

@@ -1,3 +1,41 @@
 .form-control {
     margin-bottom: 10px;
 }
+
+#bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+}
+#bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+}
+
+.homeMenu {
+    position: absolute;
+    top: 150px;
+    left: 100px;
+    margin: auto;
+    font-family: "Droid Sans Mono", Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+    color: #f7f7f7;
+    font-size: 25px;
+    width: 450px;
+}
+
+ul#ulhome a:link , ul#ulhome :visited {
+    color: #f7f7f7;
+}
+
+ul {
+    list-style-type: none;
+}
+

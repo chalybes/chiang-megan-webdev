@@ -44,7 +44,8 @@
 
         function findAllRequests() {
 
-            var url = "/mouseOrder/all"
+            var url = "/mouseOrder/all";
+
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
