@@ -12,7 +12,8 @@ app.get('/api/assignment/user', isAdmin, findAllUsers);
 app.get('/api/assignment/:userId', findUserById);
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
-app.delete('/api/assignment/user/:userId', deleteUser);
+app.delete('/api/assignment/user/:userId', isAdmin, deleteUser);
+// app.delete('/api/assignment/unregister/:userId', isSameUser, unregister);
 
 app.post  ('/api/assignment/login', passport.authenticate('local'), login);
 app.get   ('/api/checkAdmin', checkAdmin);
