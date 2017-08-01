@@ -8,7 +8,7 @@
 
         var model = this;
 
-        model.currentUser = currentUser;
+        model.user = currentUser;
 
         model.logout = logout;
 
