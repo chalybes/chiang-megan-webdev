@@ -10,7 +10,8 @@
         model.userId = currentUser._id;
         // model.userId = $routeParams['userId']; no longer necessary
         model.updateUser = updateUser;
-        model.deleteUser = deleteUser;
+        // model.deleteUser = deleteUser;
+        model.unregister = unregister;
         model.logout = logout;
 
         // Methods below no longer needed because now Passport can resolve user info and pass it
@@ -45,7 +46,15 @@
 
         function deleteUser(user) {
             userService
-                .deleteUser(user._id)
+                .unregister(user._id)    // .deleteUser(user._id)
+                .then(function () {
+                    $location.url('/login');
+                });
+        }
+
+        function unregister() {
+            userService
+                .unregister()
                 .then(function () {
                     $location.url('/login');
                 });

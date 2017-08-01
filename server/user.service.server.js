@@ -13,7 +13,7 @@ app.get('/api/assignment/:userId', findUserById);
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
 app.delete('/api/assignment/user/:userId', isAdmin, deleteUser);
-// app.delete('/api/assignment/unregister/:userId', isSameUser, unregister);
+app.delete('/api/assignment/unregister', unregister);
 
 app.post  ('/api/assignment/login', passport.authenticate('local'), login);
 app.get   ('/api/checkAdmin', checkAdmin);
@@ -173,6 +173,14 @@ function register(req, res) {
             req.login(user, function (status) {  //asynchronous call, Passport doesn't support promises
                 res.json(user);
             });
+        });
+}
+
+function unregister(req, res) {
+    userModel.deleteUser(req.user._id)
+        .then(function (status) {
+            req.user.logout();
+            res.sendStatus(200);
         });
 }
 

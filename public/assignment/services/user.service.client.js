@@ -17,7 +17,8 @@
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             updateUser: updateUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            unregister: unregister
         };
 
         function login(username, password) {
@@ -116,13 +117,17 @@
         }
 
         function deleteUser(userId) {
-            // var user = users.find(function (user) {
-            //     return user._id === userId;
-            // })
-            // var index = users.indexOf(user);
-            // users.splice(index, 1);
 
             var url = "/api/assignment/user/" + userId;
+
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+        
+        function unregister() {
+            var url = "/api/assignment/unregister";
 
             return $http.delete(url)
                 .then(function (response) {
