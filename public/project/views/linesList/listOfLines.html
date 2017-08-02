@@ -10,13 +10,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="stock in model.mouselines">
-            <td>{{stock.name}}</td>
+        <tr ng-repeat="stock in model.lines">
+            <td>{{stock.mouseline}}</td>
             <td>{{stock.status}}</td>
             <td>{{stock.generation}}</td>
             <td>{{stock.litters | date: 'short'}}</td>
             <td>{{stock.availability}}</td>
-            <td><a href="#!/request"><span class="glyphicon glyphicon-plus"></span></a></td>
+            <td><a href="#!/editLine/{{stock._id}}"><span class="glyphicon glyphicon-cog"></span></a></td>
         </tr>
     </tbody>
 </table>

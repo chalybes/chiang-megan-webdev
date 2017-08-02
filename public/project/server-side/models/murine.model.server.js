@@ -5,7 +5,8 @@ var murineModel = mongoose.model('MurineModel', murineSchema);
 murineModel.createLine = createLine;
 murineModel.deleteLine = deleteLine;
 murineModel.updateLine = updateLine;
-murineModel.findLines = findLines;
+murineModel.findAllLines = findAllLines;
+murineModel.findLineById = findLineById;
 
 module.exports = murineModel;
 
@@ -21,6 +22,10 @@ function deleteLine(lineId) {
     return murineModel.remove({_id: lineId});
 }
 
-function findLines(lineId) {
-    return murineModel.find({_id: lineId});
+function findAllLines() {
+    return murineModel.find();
+}
+
+function findLineById(lineId) {
+    return murineModel.findById({_id: lineId});
 }

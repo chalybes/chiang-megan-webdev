@@ -3,7 +3,7 @@
         .module('CYO')
         .controller('CYOcontroller', CYOcontroller);
 
-    function CYOcontroller($location) {
+    function CYOcontroller($location, murineService) {
 
         var model = this;
 
@@ -24,17 +24,27 @@
                           {name: "TacR3",   status: "Online", generation: "N7", litters: new Date(Date.UTC(2017,07,03)), availability: "low"},
                           {name: "Vamp2",   status: "Online", generation: "N7", litters: new Date(Date.UTC(2017,07,03)), availability: "low"}];
 
-        model.mouselines = mouselines;
-        model.request = requestLine;
+        // model.mouselines = mouselines;
 
-        function requestLine(mouseline) {
-            if (mouseline !== null) {
-                $location.url('/line/' + mouseline._id);
-            } else {
-                model.message = "This mouse line is not available through us";
-            }
+        // model.request = requestLine;
+
+        // function requestLine(mouseline) {
+        //     if (mouseline !== null) {
+        //         $location.url('/line/' + mouseline._id);
+        //     } else {
+        //         model.message = "This mouse line is not available through us";
+        //     }
+        // }
+
+        function init() {
+            murineService
+                .findAllLines()
+                .then(function (lines) {
+                    model.lines = lines;
+                });
         }
 
+        init();
 
     }
 

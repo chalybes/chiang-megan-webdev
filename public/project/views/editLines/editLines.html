@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="col-md-4 col-md-offset-4">
+
+        <label for="mouseline">Name</label>
+        <input class="form-control"
+               ng-model="model.line.mouseline"
+               id="mouseline" readonly>
+
+        <label for="status">Status</label>
+        <input id="status"
+                  ng-model="model.line.status"
+                  class="form-control">
+
+        <label for="generation">Generation</label>
+        <input id="generation"
+               ng-model="model.line.generation"
+               class="form-control">
+
+        <label for="litters">Litters</label>
+        <input id="litters"
+               ng-model="model.line.litters"
+               class="form-control">
+
+        <label for="availability">Availability</label>
+        <input id="availability"
+               ng-model="model.line.availability"
+               class="form-control">
+
+        <a ng-click="model.updateLine(model.line._id, model.line)"
+           class="btn btn-block btn-success">
+            Update
+        </a>
+
+        <a ng-click="model.deleteLine(model.line._id)"
+           class="btn btn-block btn-danger">
+            Delete
+        </a>
+    </div>
+</div>

@@ -1,6 +1,65 @@
 var app = require('../express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+// If undefined in our process load our local file
+// (i.e. we aren't on an external server where we set these differently)
+if(!process.env.GOOGLE_CLIENT_ID) {
+    var env = require('../env.js');
+}
+
+var googleConfig = {
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+};
+
+passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+function googleStrategy(token, refreshToken, profile, done) {
+    userModel
+        .findUserByGoogleId(profile.id)
+        .then(
+            function(user) {
+                if(user) {
+                    return done(null, user);
+                } else {
+                    var email = profile.emails[0].value;
+                    var emailParts = email.split("@");
+                    var newGoogleUser = {
+                        username:  emailParts[0],
+                        firstName: profile.name.givenName,
+                        lastName:  profile.name.familyName,
+                        email:     email,
+                        google: {
+                            id:    profile.id,
+                            token: token
+                        }
+                    };
+                    return userModel.createUser(newGoogleUser);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        )
+        .then(
+            function(user){
+                return done(null, user);
+            },
+            function(err){
+                if (err) { return done(err); }
+            }
+        );
+}
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '/assignment/index.html#!/profile',
+        failureRedirect: '/assignment/index.html#!/login'
+    }));
+
 passport.use(new LocalStrategy(localStrategy)); //tells passport to use LocalStrategy and where LocalStrategy is configured
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
@@ -21,6 +80,7 @@ app.get   ('/api/checkLoggedIn', checkLoggedIn);
 app.post  ('/api/assignment/register', register);
 app.post  ('/api/assignment/logout', logout);
 
+app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
 function createUser(req, res) {
     var user = req.body;

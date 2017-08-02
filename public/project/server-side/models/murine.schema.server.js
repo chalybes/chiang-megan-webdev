@@ -6,6 +6,6 @@ var murineSchema = mongoose.Schema({
         generation: String,
         litters: {type: Date},
         availability: String},
-        {collection: "mouseline"});
+        {collection: "mouselines"});
 
 module.exports = murineSchema;

@@ -15,6 +15,11 @@
                 controller: 'CYOcontroller',
                 controllerAs: 'model'
             })
+            .when('/editLine/:lineId', {
+                templateUrl: 'views/editLines/editLines.html',
+                controller: 'editLinesController',
+                controllerAs: 'model'
+            })
             .when('/request', {
                 templateUrl: 'views/requestPage/request.html',
                 controller: 'requestController',

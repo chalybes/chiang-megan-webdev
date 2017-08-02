@@ -17,9 +17,10 @@ function createRequest(req, res) {
 
 function updateRequest(req, res) {
     var line = req.body;
+    var lineId = req.params["lineId"];
 
     requestModel
-        .updateLineRequest(userId, user)
+        .updateLineRequest(lineId, line)
         .then(function (status) {
             res.send(status);
         });

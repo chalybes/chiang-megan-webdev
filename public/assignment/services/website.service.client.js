@@ -76,16 +76,6 @@
         }
 
         function findAllWebsitesForUser(userId) {
-            // var resultSet = [];
-            //
-            // for (var w in websites) {
-            //     if (websites[w].developerId === userId) {
-            //         // websites[w].created = new Date();
-            //         // websites[w].updated = new Date();
-            //         resultSet.push(websites[w]);
-            //     }
-            // }
-            // return resultSet;
 
             var url = "/api/assignment/" + userId + "/website"
             return $http.get(url)
