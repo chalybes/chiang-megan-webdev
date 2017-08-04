@@ -1,10 +1,10 @@
 (function () {
     angular
-        .module('WAM')
+        .module('CYO')
         .controller('homeController', homeController);
 
     function homeController(currentUser, userService, $location) {
-    // function homeController() {
+        // function homeController() {
 
         var model = this;
 
@@ -19,6 +19,7 @@
                     $location.url('/');
                 });
         }
+
     }
 
 })();
