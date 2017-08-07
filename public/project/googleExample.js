@@ -47,7 +47,7 @@ function handleAuthResult(authResult) {
             console.log("Calendar library loaded.");
         });
     } else {
-        authorizeButton.style.visibility = '';
+        authorizeButton.style.visibility = 'visible';
         authorizeButton.onclick = handleAuthClick;
     }
 }

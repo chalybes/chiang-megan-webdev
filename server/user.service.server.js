@@ -1,6 +1,7 @@
 var app = require('../express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
+var bcrypt = require("bcrypt-nodejs");
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // If undefined in our process load our local file
@@ -178,7 +179,7 @@ function localStrategy(username, password, done) {
         .findUserByCredentials(username, password)
         .then(
             function(user) {
-                if(user.username === username && user.password === password) {
+                if(user && bcrypt.compareSync(password, user.password)) {
                     return done(null, user);
                 } else {
                     return done(null, false);
@@ -226,6 +227,7 @@ function logout(req, res) {
 
 function register(req, res) {
     var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
 
     userModel
         .createUser(user)

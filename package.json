@@ -6,6 +6,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "aos": "^2.2.0",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",

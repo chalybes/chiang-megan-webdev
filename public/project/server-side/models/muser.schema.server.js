@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require("q").Promise;
 
-var userSchema = mongoose.Schema({
+var muserSchema = mongoose.Schema({
         username: {type: String, require: true},
         password: {type: String, require: true},
         firstName: String,
@@ -13,6 +13,6 @@ var userSchema = mongoose.Schema({
         email: String,
         role: [{type: String, enum: ['USER', 'ADMIN']}],
         dateCreated: {type: Date, default: Date.now}},
-        {collection: "puser"});
+        {collection: "muser"});
 
-module.exports = userSchema;
+module.exports = muserSchema;

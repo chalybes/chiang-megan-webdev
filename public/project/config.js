@@ -6,9 +6,20 @@
     function configuration($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/home/home.html'
-                // controller: 'CYOcontroller',
-                // controllerAs: 'model'
+                templateUrl: 'views/home/home.html',
+                controller: 'homeController',
+                controllerAs: 'model',
+                resolve: {currentUser: checkCurrentUser}
+            })
+            .when('/login', {
+                templateUrl: 'views/home/login.html',
+                controller: 'loginController',
+                controllerAs: 'model'
+            })
+            .when('/register', {
+                templateUrl: 'views/home/register.html',
+                controller: 'registerController',
+                controllerAs: 'model'
             })
             .when('/listOfLines', {
                 templateUrl: 'views/linesList/listOfLines.html',
@@ -23,7 +34,8 @@
             .when('/request', {
                 templateUrl: 'views/requestPage/request.html',
                 controller: 'requestController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {currentUser: checkLoggedIn}
             })
             .when('/listOfRequests', {
                 templateUrl: 'views/placedRequests/listOfRequests.html',
@@ -31,10 +43,10 @@
                 controllerAs: 'model'
             });
 
-        function checkCurrentUser($q, $location, userService) {
+        function checkCurrentUser($q, $location, muserService) {
             var deferred = $q.defer();
 
-            userService.checkLoggedIn()
+            muserService.checkLoggedIn()
                 .then(function (currentUser) {
 
                     if (currentUser === '0') {
@@ -46,10 +58,10 @@
             return deferred.promise;
         }
 
-        function checkAdmin($q, $location, userService) {
+        function checkAdmin($q, $location, muserService) {
             var deferred = $q.defer();
 
-            userService.checkAdmin()
+            muserService.checkAdmin()
                 .then(function (currentUser) {
                     if (currentUser === '0') {
                         deferred.resolve({});
@@ -61,13 +73,13 @@
             return deferred.promise;
         }
 
-        function checkLoggedIn($q, $location, userService) {
+        function checkLoggedIn($q, $location, muserService) {
 
             // return userService.checkLoggedIn();
 
             var deferred = $q.defer();
 
-            userService.checkLoggedIn()
+            muserService.checkLoggedIn()
                 .then(function (currentUser) {
 
                     if (currentUser === '0') {

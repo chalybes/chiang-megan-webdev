@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('CYO')
-        .factory('userService', userService);
+        .factory('muserService', muserService);
 
-    function userService($http) {
+    function muserService($http) {
 
         return {
             createUser: createUser,
@@ -21,7 +21,7 @@
         };
 
         function login(username, password) {
-            var url = "/api/login";
+            var url = "/muser/login";
 
             var credentials = {username: username, password: password};
 
@@ -32,7 +32,7 @@
         }
 
         function register(user) {
-            var url = "/api/register";
+            var url = "/muser/register";
             return $http.post(url, user)
                 .then(function (response) {
                     return response.data;
@@ -40,7 +40,7 @@
         }
 
         function logout() {
-            var url = "/api/logout";
+            var url = "/muser/logout";
 
             return $http.post(url)
                 .then(function (response) {
@@ -49,7 +49,7 @@
         }
 
         function checkAdmin() {
-            var url = "/api/checkAdmin";
+            var url = "/muser/checkAdmin";
 
             return $http.get(url)
                 .then(function (response) {
@@ -58,7 +58,7 @@
         }
 
         function checkLoggedIn() {
-            var url = "/api/checkLoggedIn";
+            var url = "/muser/authStat";
 
             return $http.get(url)
                 .then(function (response) {
@@ -67,7 +67,7 @@
         }
 
         function findAllUsers(username, password) {
-            var url = "/api/users";
+            var url = "/muser/users";
 
             return $http.get(url)
                 .then(function (response) {
@@ -77,7 +77,7 @@
 
         function findUserByCredentials(username, password) {
 
-            var url = "/api/assignment/user?username=" + username + "&password=" + password;
+            var url = "/muser/user?username=" + username + "&password=" + password;
 
             return $http.get(url)
                 .then(function (response) {
@@ -87,7 +87,7 @@
 
         function findUserById(userId) {
 
-            var url = "/api/" + userId;
+            var url = "/muser/" + userId;
 
             return $http.get(url)
                 .then(function (response) {
@@ -97,7 +97,7 @@
 
         function createUser(user) {
 
-            var url = "/api/user";
+            var url = "/muser/user";
 
             // creating brand new instance because we're making a new user
             return $http.post(url, user)
@@ -107,7 +107,7 @@
         }
 
         function updateUser(userId, user) {
-            var url = "/api/user/" + userId;
+            var url = "/muser/user/" + userId;
 
             return $http.put(url, user)
                 .then(function (response) {
@@ -117,7 +117,7 @@
 
         function deleteUser(userId) {
 
-            var url = "/api/user/" + userId;
+            var url = "/muser/user/" + userId;
 
             return $http.delete(url)
                 .then(function (response) {
@@ -127,7 +127,7 @@
 
         function findUserByUsername(username) {
 
-            var url = "/api/assignment/graduate/user?username=" + username;
+            var url = "/muser/assignment/graduate/user?username=" + username;
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

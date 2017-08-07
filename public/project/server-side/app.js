@@ -22,6 +22,7 @@ mongoose.Promise = q.Promise;
 
 require('./murine.service.server');
 require('./request.service.server');
+require('./muser.service.server');
 
 
 

@@ -1,90 +1,106 @@
 var app = require('../../../express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var muserModel = require('./models/muser.model.server');
 
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 // If undefined in our process load our local file
 // (i.e. we aren't on an external server where we set these differently)
-if(!process.env.GOOGLE_CLIENT_ID) {
-    var env = require('../../../env.js');
-}
-
-var googleConfig = {
-    clientID     : process.env.GOOGLE_CLIENT_ID,
-    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL  : process.env.GOOGLE_CALLBACK_URL
-};
-
-passport.use(new GoogleStrategy(googleConfig, googleStrategy));
-
-function googleStrategy(token, refreshToken, profile, done) {
-    userModel
-        .findUserByGoogleId(profile.id)
-        .then(
-            function(user) {
-                if(user) {
-                    return done(null, user);
-                } else {
-                    var email = profile.emails[0].value;
-                    var emailParts = email.split("@");
-                    var newGoogleUser = {
-                        username:  emailParts[0],
-                        firstName: profile.name.givenName,
-                        lastName:  profile.name.familyName,
-                        email:     email,
-                        google: {
-                            id:    profile.id,
-                            token: token
-                        }
-                    };
-                    return userModel.createUser(newGoogleUser);
-                }
-            },
-            function(err) {
-                if (err) { return done(err); }
-            }
-        )
-        .then(
-            function(user){
-                return done(null, user);
-            },
-            function(err){
-                if (err) { return done(err); }
-            }
-        );
-}
-
-app.get('/auth/google/callback',
-    passport.authenticate('google', {
-        successRedirect: '/assignment/index.html#!/profile',
-        failureRedirect: '/assignment/index.html#!/login'
-    }));
+// if(!process.env.GOOGLE_CLIENT_ID) {
+//     var env = require('../../../env.js');
+// }
+//
+// var googleConfig = {
+//     clientID     : process.env.GOOGLE_CLIENT_ID,
+//     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL  : process.env.GOOGLE_CALLBACK_URL
+// };
+//
+// passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+//
+// function googleStrategy(token, refreshToken, profile, done) {
+//     muserModel
+//         .findUserByGoogleId(profile.id)
+//         .then(
+//             function(user) {
+//                 if(user) {
+//                     return done(null, user);
+//                 } else {
+//                     var email = profile.emails[0].value;
+//                     var emailParts = email.split("@");
+//                     var newGoogleUser = {
+//                         username:  emailParts[0],
+//                         firstName: profile.name.givenName,
+//                         lastName:  profile.name.familyName,
+//                         email:     email,
+//                         google: {
+//                             id:    profile.id,
+//                             token: token
+//                         }
+//                     };
+//                     return muserModel.createUser(newGoogleUser);
+//                 }
+//             },
+//             function(err) {
+//                 if (err) { return done(err); }
+//             }
+//         )
+//         .then(
+//             function(user){
+//                 return done(null, user);
+//             },
+//             function(err){
+//                 if (err) { return done(err); }
+//             }
+//         );
+// }
+//
+// app.get('/auth/google/callback',
+//     passport.authenticate('google', {
+//         successRedirect: '/project/index.html#!/',
+//         failureRedirect: '/project/index.html#!/login'
+//     }));
 
 passport.use(new LocalStrategy(localStrategy)); //tells passport to use LocalStrategy and where LocalStrategy is configured
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-var userModel = require('./models/users/user.model.server');
+app.post  ('/muser/login', passport.authenticate('local'), login);
+app.get   ('/muser/authStat', checkLoggedIn);
+app.get   ('/muser/checkAdmin', checkAdmin);
+app.post  ('/muser/register', register);
+app.post  ('/muser/logout', logout);
 
 // app.get('/api/assignment/user', findUserByCredentials);
-app.get('/api/assignment/user', isAdmin, findAllUsers);
-app.get('/api/assignment/:userId', findUserById);
-app.post('/api/user', createUser);
-app.put('/api/user/:userId', updateUser);
-app.delete('/api/user/:userId', isAdmin, deleteUser);
+app.get('/muser/users', isAdmin, findAllUsers);
+app.get('/muser/:userId', findUserById);
+app.post('/muser/user', createUser);
+app.put('/muser/user/:userId', updateUser);
+app.delete('/muser/user/:userId', isAdmin, deleteUser);
 
-app.post  ('/api/login', passport.authenticate('local'), login);
-app.get   ('/api/checkAdmin', checkAdmin);
-app.get   ('/api/checkLoggedIn', checkLoggedIn);
-app.post  ('/api/register', register);
-app.post  ('/api/logout', logout);
+// app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
-app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+function localStrategy(username, password, done) {
+    muserModel
+        .findUserByCredentials(username, password)
+        .then(
+            function(user) {
+                if(user.username === username && user.password === password) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        );
+}
 
 function createUser(req, res) {
     var user = req.body;
 
-    userModel.createUser(user)
+    muserModel.createUser(user)
         .then(function (user) {
             res.json(user);
         })
@@ -94,7 +110,7 @@ function updateUser(req, res) {
     var user = req.body;
     var userId = req.params["userId"];
 
-    userModel
+    muserModel
         .updateUser(userId, user)
         .then(function (status) {
             res.send(status);
@@ -104,7 +120,7 @@ function updateUser(req, res) {
 function deleteUser(req, res) {
     var userId = req.params.userId;
 
-    userModel
+    muserModel
         .deleteUser(userId)
         .then(function (status) {
             res.sendStatus(200);
@@ -115,7 +131,7 @@ function findUserByCredentials(req, res) {
     var username = req.query['username'];
     var password = req.query['password'];
 
-    userModel
+    muserModel
         .findUserByCredentials(username, password)
         .then(function (user) {
             if (user !== null) {
@@ -133,7 +149,7 @@ function findAllUsers(req, res) {
     var password = req.query.password;
 
     if(username && password) {
-        userModel
+        muserModel
             .findUserByCredentials(username, password)
             .then(function (user) {
                 if(user) {
@@ -143,7 +159,7 @@ function findAllUsers(req, res) {
                 }
             });
     } else if(username) {
-        userModel
+        muserModel
             .findUserByUsername(username)
             .then(function (user) {
                 if(user) {
@@ -153,7 +169,7 @@ function findAllUsers(req, res) {
                 }
             });
     } else {
-        userModel
+        muserModel
             .findAllUsers()
             .then(function (users) {
                 res.json(users);
@@ -165,28 +181,11 @@ function findUserById(req, res) {
 
     var userId = req.params['userId'];
 
-    userModel
+    muserModel
         .findUserById(userId)
         .then(function (user) {
             res.send(user);
         });
-}
-
-function localStrategy(username, password, done) {
-    userModel
-        .findUserByCredentials(username, password)
-        .then(
-            function(user) {
-                if(user.username === username && user.password === password) {
-                    return done(null, user);
-                } else {
-                    return done(null, false);
-                }
-            },
-            function(err) {
-                if (err) { return done(err); }
-            }
-        );
 }
 
 function isAdmin(req, res, next) {
@@ -226,7 +225,7 @@ function logout(req, res) {
 function register(req, res) {
     var user = req.body;
 
-    userModel
+    muserModel
         .createUser(user)
         .then(function (user) {
             req.login(user, function (status) {  //asynchronous call, Passport doesn't support promises
@@ -236,7 +235,7 @@ function register(req, res) {
 }
 
 function unregister(req, res) {
-    userModel.deleteUser(req.user._id)
+    muserModel.deleteUser(req.user._id)
         .then(function (status) {
             req.user.logout();
             res.sendStatus(200);
@@ -250,7 +249,7 @@ function serializeUser(user, done) {
 
 //retrieves user from cookie, searches for the user using its ID
 function deserializeUser(user, done) {
-    userModel
+    muserModel
         .findUserById(user._id)
         .then(
             function(user){  //if user exists, done

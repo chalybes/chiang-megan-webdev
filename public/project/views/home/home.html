@@ -1,14 +1,16 @@
 <body>
 <div id="bg">
-    <img src="../../img/demo/_small/optomouse.jpg">
+    <img src="/project/img/demo/_small/optomouse.jpg">
 </div>
 
 <div class="homeMenu animated slideInLeft">
     <h1>Choose Your Overlord</h1>
     <ul id="ulhome">
+        <li ng-if="!model.user._id"><a href="#!/login">Login</a></li>
+        <li ng-if="!model.user._id"><a href="#!/register">Register</a></li>
         <li><a href="#!/listOfLines">See what is available</a></li>
         <li><a href="#!/listOfRequests">Check the Request Queue</a></li>
-        <li><a href="#!/request">Make a Request</a></li>
+        <li ng-if="model.user._id"><a href="#!/request">Make a Request</a></li>
     </ul>
 </div>
 </body>
