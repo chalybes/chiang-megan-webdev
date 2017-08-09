@@ -34,8 +34,8 @@
             .when('/request', {
                 templateUrl: 'views/requestPage/request.html',
                 controller: 'requestController',
-                controllerAs: 'model',
-                resolve: {currentUser: checkLoggedIn}
+                controllerAs: 'model'
+                // resolve: {currentUser: checkLoggedIn}
             })
             .when('/listOfRequests', {
                 templateUrl: 'views/placedRequests/listOfRequests.html',

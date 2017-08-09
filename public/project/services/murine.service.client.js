@@ -25,7 +25,7 @@
 
         function updateLine(lineId, line) {
 
-            var url = "/api/updateLine" + lineId;
+            var url = "/api/updateLine/" + lineId;
 
             return $http.put(url, line)
                 .then(function (response) {

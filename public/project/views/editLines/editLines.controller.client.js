@@ -8,6 +8,8 @@
         var model = this;
 
         model.lineId = $routeParams["lineId"];
+        model.updateLine = updateLine;
+
         // var lineId = model.line._id;
 
         function init() {

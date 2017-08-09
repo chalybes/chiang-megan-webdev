@@ -3,6 +3,44 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var muserModel = require('./models/muser.model.server');
 
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var gcal     = require('google-calendar');
+
+if(!process.env.GOOGLE_CLIENT_ID) {
+    var env = require('../../../env.js');
+}
+
+passport.use(new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID2,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET2,
+        callbackURL: process.env.GOOGLE_CALLBACK_URL2,
+        scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar']
+    },
+    function(accessToken, refreshToken, profile, done) {
+
+        google_calendar = new gcal.GoogleCalendar(accessToken);
+
+        return done(null, profile);
+    }
+));
+
+app.get('/auth',
+    passport.authenticate('google', { session: false }));
+
+app.all('/:calendarId/add', function(req, res) {
+
+    if(!req.session.access_token) return res.redirect('/auth');
+
+    var accessToken     = req.session.access_token;
+    var calendarId      = req.params.calendarId;
+    var text            = req.query.text || 'Hello World';
+
+    gcal(accessToken).events.quickAdd(calendarId, text, function(err, data) {
+        if(err) return res.send(500,err);
+        return res.redirect('/'+calendarId);
+    });
+});
+
 // var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 // If undefined in our process load our local file
 // (i.e. we aren't on an external server where we set these differently)

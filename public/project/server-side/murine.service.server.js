@@ -4,7 +4,7 @@ var murineModel = require('./models/murine.model.server');
 app.get('/api/allines', findAllLines);
 app.get('/api/findLine/:lineId', findLineById);
 app.post('/api/newLine', createLine);
-app.put('/api/updateLine', updateLine);
+app.put('/api/updateLine/:lineId', updateLine);
 app.delete('/api/killine', deleteLine);
 
 function createLine(req, res) {
