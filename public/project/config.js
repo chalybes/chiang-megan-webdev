@@ -41,6 +41,11 @@
                 templateUrl: 'views/placedRequests/listOfRequests.html',
                 controller: 'listOfRequestsController',
                 controllerAs: 'model'
+            })
+            .when('/editRequest/:orderId', {
+                templateUrl: 'views/editRequests/editRequests.html',
+                controller: 'editRequestsController',
+                controllerAs: 'model'
             });
 
         function checkCurrentUser($q, $location, muserService) {

@@ -11,8 +11,7 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.deleteUser = deleteUser;
 userModel.updateUser = updateUser;
-userModel.findUserByGoogleId = findUserByGoogleId; 
-// userModel.addWebsite = addWebsite;
+userModel.findUserByGoogleId = findUserByGoogleId;
 
 module.exports = userModel;
 
@@ -54,12 +53,3 @@ function updateUser(userId, user) {
 function findUserByGoogleId(googleId) {
     return userModel.findOne({'google.id': googleId});
 }
-
-// function addWebsite(userId, websiteId) {
-//     return userModel
-//         .findById(userId)
-//         .then(function (user) {
-//             user.websites.push(websiteId);
-//             return user.save();
-//         });
-// }

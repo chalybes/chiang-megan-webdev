@@ -5,7 +5,7 @@ app.get('/api/allines', findAllLines);
 app.get('/api/findLine/:lineId', findLineById);
 app.post('/api/newLine', createLine);
 app.put('/api/updateLine/:lineId', updateLine);
-app.delete('/api/killine', deleteLine);
+app.delete('/api/killine/:lineId', deleteLine);
 
 function createLine(req, res) {
     var line = req.body;
@@ -27,9 +27,10 @@ function updateLine(req, res) {
 }
 
 function deleteLine(req, res) {
-    var line = req.body;
 
-    murineModel.deleteLine()
+    var lineId = req.params["lineId"];
+
+    murineModel.deleteLine(lineId)
         .then(function (status) {
             res.sendStatus(200);
         });

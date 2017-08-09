@@ -8,6 +8,7 @@ requestModel.createLineRequest = createLineRequest;
 requestModel.deleteLineRequest = deleteLineRequest;
 requestModel.updateLineRequest = updateLineRequest;
 requestModel.findLineRequests = findLineRequests;
+requestModel.findLineRequestById = findLineRequestById;
 
 module.exports = requestModel;
 
@@ -25,4 +26,8 @@ function deleteLineRequest(lineId) {
 
 function findLineRequests() {
     return requestModel.find();
+}
+
+function findLineRequestById(lineId) {
+    return requestModel.findById({_id: lineId});
 }

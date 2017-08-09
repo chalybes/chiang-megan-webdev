@@ -9,6 +9,7 @@
             createRequest: createRequest,
             updateRequest: updateRequest,
             deleteRequest: deleteRequest,
+            findRequestById: findRequestById,
             findAllRequests: findAllRequests
         };
 
@@ -37,6 +38,16 @@
             var url = "/mouseOrder/delete/" + orderId;
 
             return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function findRequestById(orderId) {
+
+            var url = "/mouseOrder/" + orderId;
+
+            return $http.get(url)
                 .then(function (response) {
                     return response.data;
                 });
