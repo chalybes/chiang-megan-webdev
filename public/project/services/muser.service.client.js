@@ -58,7 +58,7 @@
         }
 
         function checkLoggedIn() {
-            var url = "/muser/authStat";
+            var url = "/muser/authenticate";
 
             return $http.get(url)
                 .then(function (response) {

@@ -41,15 +41,15 @@ app.all('/:calendarId/add', function(req, res) {
     });
 });
 
-passport.use(new LocalStrategy(localStrategy)); //tells passport to use LocalStrategy and where LocalStrategy is configured
-passport.serializeUser(serializeUser);
-passport.deserializeUser(deserializeUser);
-
 app.post  ('/muser/login', passport.authenticate('local'), login);
-app.get   ('/muser/authStat', checkLoggedIn);
+app.get   ('/muser/authenticate', checkLoggedIn);
 app.get   ('/muser/checkAdmin', checkAdmin);
 app.post  ('/muser/register', register);
 app.post  ('/muser/logout', logout);
+
+passport.use(new LocalStrategy(localStrategy)); //tells passport to use LocalStrategy and where LocalStrategy is configured
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 // app.get('/api/assignment/user', findUserByCredentials);
 app.get('/muser/users', isAdmin, findAllUsers);
@@ -57,24 +57,6 @@ app.get('/muser/:userId', findUserById);
 app.post('/muser/user', createUser);
 app.put('/muser/user/:userId', updateUser);
 app.delete('/muser/user/:userId', isAdmin, deleteUser);
-
-
-function localStrategy(username, password, done) {
-    muserModel
-        .findUserByCredentials(username, password)
-        .then(
-            function(user) {
-                if(user.username === username && user.password === password) {
-                    return done(null, user);
-                } else {
-                    return done(null, false);
-                }
-            },
-            function(err) {
-                if (err) { return done(err); }
-            }
-        );
-}
 
 function createUser(req, res) {
     var user = req.body;
@@ -213,12 +195,21 @@ function register(req, res) {
         });
 }
 
-function unregister(req, res) {
-    muserModel.deleteUser(req.user._id)
-        .then(function (status) {
-            req.user.logout();
-            res.sendStatus(200);
-        });
+function localStrategy(username, password, done) {
+    muserModel
+        .findUserByCredentials(username, password)
+        .then(
+            function(user) {
+                if(user.username === username && user.password === password) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        );
 }
 
 //passes user object into cookie

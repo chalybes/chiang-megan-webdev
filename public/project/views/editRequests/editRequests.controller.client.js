@@ -9,6 +9,7 @@
 
         model.orderId = $routeParams["orderId"];
         model.updateRequest = updateRequest;
+        model.deleteRequest = deleteRequest;
 
 
         function init() {

@@ -21,6 +21,10 @@
                 controller: 'registerController',
                 controllerAs: 'model'
             })
+            .when('/profile', {
+                templateUrl: 'views/profile/profile.html'
+
+            })
             .when('/listOfLines', {
                 templateUrl: 'views/linesList/listOfLines.html',
                 controller: 'CYOcontroller',
@@ -34,8 +38,8 @@
             .when('/request', {
                 templateUrl: 'views/requestPage/request.html',
                 controller: 'requestController',
-                controllerAs: 'model'
-                // resolve: {currentUser: checkLoggedIn}
+                controllerAs: 'model',
+                resolve: {currentUser: checkLoggedIn}
             })
             .when('/listOfRequests', {
                 templateUrl: 'views/placedRequests/listOfRequests.html',

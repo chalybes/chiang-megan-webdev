@@ -9,6 +9,7 @@
 
         model.lineId = $routeParams["lineId"];
         model.updateLine = updateLine;
+        model.deleteLine = deleteLine;
 
         // var lineId = model.line._id;
 
