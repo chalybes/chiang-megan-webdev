@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
-app.use(session({secret: "whatever random secret to hold place"}));
+app.use(session({secret: "whateverrandomsecrettoholdplace"}));
 app.use(passport.initialize());
 app.use(passport.session()); //tells passport to use the session already created ref: line 15
 

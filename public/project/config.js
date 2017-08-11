@@ -28,12 +28,14 @@
             .when('/listOfLines', {
                 templateUrl: 'views/linesList/listOfLines.html',
                 controller: 'CYOcontroller',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {currentUser: checkCurrentUser}
             })
             .when('/editLine/:lineId', {
                 templateUrl: 'views/editLines/editLines.html',
                 controller: 'editLinesController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {currentUser: checkAdmin}
             })
             .when('/request', {
                 templateUrl: 'views/requestPage/request.html',
@@ -44,7 +46,8 @@
             .when('/listOfRequests', {
                 templateUrl: 'views/placedRequests/listOfRequests.html',
                 controller: 'listOfRequestsController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {currentUser: checkCurrentUser}
             })
             .when('/editRequest/:orderId', {
                 templateUrl: 'views/editRequests/editRequests.html',
@@ -56,12 +59,12 @@
             var deferred = $q.defer();
 
             muserService.checkLoggedIn()
-                .then(function (currentUser) {
+                .then(function (user) {
 
-                    if (currentUser === '0') {
+                    if (user === '0') {
                         deferred.resolve({});
                     } else {
-                        deferred.resolve(currentUser); //the user exists, resolve the signed-in status
+                        deferred.resolve(user); //the user exists, resolve the signed-in status
                     }
                 });
             return deferred.promise;
@@ -89,15 +92,15 @@
             var deferred = $q.defer();
 
             muserService.checkLoggedIn()
-                .then(function (currentUser) {
+                .then(function (user) {
 
-                    if (currentUser === '0') {
+                    if (user === '0') {
 
                         deferred.reject();
                         $location.url('/login'); //the user does not currently exists, cannot navigate to pages it's not supposed to
 
                     } else {
-                        deferred.resolve(currentUser); //the user exists, resolve the signed-in status
+                        deferred.resolve(user); //the user exists, resolve the signed-in status
                     }
                 });
             return deferred.promise;

@@ -3,11 +3,11 @@
         .module('CYO')
         .controller('listOfRequestsController', listOfRequestsController);
 
-    function listOfRequestsController($location, requestService) {
+    function listOfRequestsController($location, requestService, currentUser) {
 
         var model = this;
 
-        // model.user = currentUser;
+        model.user = currentUser;
 
         var peepsRequests = [{name: "Brooke",     mouseline: "Hsd11b2", amount: "6",  gender: "Males",   deadline: new Date(Date.UTC(2017,6,8)), room: "N049",  delivered: "Y"},
                              {name: "Chris",      mouseline: "TacR3",   amount: "10", gender: "Males",   deadline: new Date(Date.UTC(2017,6,22)), room: "N049",  delivered: "N"},

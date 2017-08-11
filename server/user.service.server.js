@@ -179,7 +179,7 @@ function localStrategy(username, password, done) {
         .findUserByCredentials(username, password)
         .then(
             function(user) {
-                if(user && bcrypt.compareSync(password, user.password)) {
+                if(user.username === username && user.password === password) {
                     return done(null, user);
                 } else {
                     return done(null, false);
@@ -218,6 +218,12 @@ function checkLoggedIn(req, res) {
 function login(req, res) {
     var user = req.user;
     res.json(user);
+
+    // if(user && bcrypt.compareSync(password, user.password)) {
+    //     return done(null, user);
+    // } else {
+    //     return done(null, false);
+    // }
 }
 
 function logout(req, res) {

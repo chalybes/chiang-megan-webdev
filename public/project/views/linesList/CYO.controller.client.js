@@ -3,9 +3,10 @@
         .module('CYO')
         .controller('CYOcontroller', CYOcontroller);
 
-    function CYOcontroller($location, murineService) {
+    function CYOcontroller($location, murineService, currentUser) {
 
         var model = this;
+        model.user = currentUser;
 
         var mouselines = [{name: "AgRP",      status: "Online", generation: "N7", litters: new Date(Date.UTC(2017,06,14)), availability: "high"},
                           {name: "Brs3",      status: "Online", generation: "N6", litters: new Date(Date.UTC(2017,06,10)), availability: "low"},

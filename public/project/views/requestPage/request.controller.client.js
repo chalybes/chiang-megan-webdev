@@ -3,7 +3,9 @@
         .module('CYO')
         .controller('requestController', requestController);
 
-    function requestController($location, requestService) {
+    function requestController($location, requestService, currentUser) {
+
+        model.user = currentUser;
 
         var clientId = '186029965139-lr46un71h6cuc737mtl24ge5mdemanbo.apps.googleusercontent.com';
         var apiKey = 'AIzaSyDP6KgQl4e92qhOHGG2FvyXgy5I_sxU-3E';

@@ -21,7 +21,7 @@
         };
 
         function login(username, password) {
-            var url = "/muser/login";
+            var url = "/login";
 
             var credentials = {username: username, password: password};
 
@@ -58,7 +58,7 @@
         }
 
         function checkLoggedIn() {
-            var url = "/muser/authenticate";
+            var url = "/muser/checkAuth";
 
             return $http.get(url)
                 .then(function (response) {
