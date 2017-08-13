@@ -3,27 +3,68 @@
     <main>
 
         <aside>
-            <h1>Sidebar</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi explicabo autem cupiditate, facere quas recusandae itaque voluptates sint accusantium amet illo veniam totam placeat odio magni, quaerat eligendi.
-                Distinctio et cupiditate nemo fugit, praesentium, ea obcaecati dolores non amet autem sequi laboriosam labore vero fugiat dolorem qui voluptatibus omnis eos architecto, recusandae corporis rerum quod.
-                Ea minus et odio voluptate quaerat facere incidunt, impedit repellat eos nihil quis modi vel molestiae,
-                eum vitae nam nemo quasi sit aperiam unde ex fugiat. Magnam dolores, enim consectetur veniam illum error
-                eaque ea necessitatibus nam ipsam maxime dolore temporibus animi odio eum molestiae iure. Ut quos cupiditate ad
-                perferendis dolorum nemo deserunt exercitationem magni ipsa iste ea fugit expedita sapiente numquam reprehenderit
-                dolore, quo minus excepturi asperiores sit voluptatibus accusamus necessitatibus, ipsam. Delectus iste cupiditate
-                asperiores vero repellendus atque aliquid temporibus perspiciatis reiciendis quibusdam similique, nesciunt
-                accusantium tempora voluptatem optio qui odit ullam amet eveniet illum incidunt quis quia repudiandae animi.
-                Recusandae, consequuntur laboriosam praesentium fugit possimus nemo ut porro reiciendis quo aperiam et aliquam
-                fuga consectetur fugiat veritatis necessitatibus officiis, officia repellendus, rem. Voluptatem itaque, dolores
-                autem at, culpa cum quam ratione laborum quo totam, nemo sed dolor, hic nisi nobis illo.
-            </p>
+            <h1>{{model.user.username}}'s Profile</h1>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" ng-model="model.user.username" class="form-control" id="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" ng-model="model.user.email" class="form-control" id="email" placeholder="alice@wonderland.com">
+                </div>
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" ng-model="model.user.firstName" class="form-control" id="first-name" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" ng-model="model.user.lastName" class="form-control" id="last-name" placeholder="Last Name">
+                </div>
+            </form>
+
+            <a ng-click="model.updateUser(model.user)"
+               class="btn btn-success btn-block">Update</a>
+
+            <a href="#!/"
+               class="btn btn-primary btn-block">Go Home</a>
+
+            <a class="btn btn-danger  btn-block"
+               ng-click="model.logout()">Logout</a>
+
         </aside>
 
         <article>
-            <h1>Content</h1>
+            <h1>Comments</h1>
+            <ul class="list-group">
+                <li ng-repeat="entry in model.comments" class="list-group-item">
+                    <span ng-click="model.deleteComment(entry._id)" class="glyphicon glyphicon-remove pull-right"></span>
+                    {{entry.title}} : {{entry.comment}}
+                </li>
+            </ul>
             <p>
-                lipsum...
+            <div class="container-fluid">
+                <div class="col-sm-4 col-sm-offset-4">
+
+                    <label for="title">Title</label>
+                    <input class="form-control"
+                           ng-model="comment.title"
+                           placeholder="Title"
+                           id="title"/>
+
+                    <label for="comment">Comment</label>
+                    <textarea id="comment"
+                              rows="5"
+                              ng-model="comment.comment"
+                              placeholder="So big it is its own country"
+                              class="form-control"></textarea>
+
+                    <a ng-click="model.createComment(comment)"
+                       class="btn btn-block btn-success">
+                        Make a Comment
+                    </a>
+                </div>
+            </div>
             </p>
         </article>
 

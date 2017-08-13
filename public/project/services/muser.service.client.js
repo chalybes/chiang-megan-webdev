@@ -21,7 +21,7 @@
         };
 
         function login(username, password) {
-            var url = "/login";
+            var url = "/muser/login";
 
             var credentials = {username: username, password: password};
 
@@ -53,7 +53,7 @@
 
             return $http.get(url)
                 .then(function (response) {
-                    return respnse.data;
+                    return response.data;
                 });
         }
 

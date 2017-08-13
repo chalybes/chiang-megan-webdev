@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="../assignment/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="../assignment/vendor/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="./vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="./vendor/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="./css/requeststyles.css" rel="stylesheet">
 
-    <script src="../assignment/vendor/angular/angular.min.js"></script>
-    <script src="../assignment/vendor/angular/angular-route.min.js"></script>
+    <script src="./vendor/angular/angular.min.js"></script>
+    <script src="./vendor/angular/angular-route.min.js"></script>
 
     <script src="app.js"></script>
     <script src="config.js"></script>
@@ -22,6 +22,9 @@
     <script src="views/placedRequests/listOfRequests.controller.client.js"></script>
     <script src="views/editLines/editLines.controller.client.js"></script>
     <script src="views/editRequests/editRequests.controller.client.js"></script>
+    <script src="views/adminCommand/adminCommentsView.controller.client.js"></script>
+    <script src="views/adminCommand/adminCommand.controller.client.js"></script>
+    <script src="views/profile/profile.controller.client.js"></script>
     <script src="views/home/home.controller.client.js"></script>
     <script src="views/home/login.controller.client.js"></script>
     <script src="views/home/register.controller.client.js"></script>
@@ -30,11 +33,13 @@
     <script src="./services/request.service.client.js"></script>
     <script src="./services/murine.service.client.js"></script>
     <script src="./services/muser.service.client.js"></script>
+    <script src="./services/comments.service.client.js"></script>
 
     <!--Models-->
     <script src="./server-side/models/request.model.server.js"></script>
     <script src="./server-side/models/murine.model.server.js"></script>
-    <script src="server-side/models/muser.model.server.js"></script>
+    <script src="./server-side/models/muser.model.server.js"></script>
+    <script src="./server-side/models/comments.model.server.js"></script>
 
 </head>
 
@@ -47,7 +52,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../assignment/vendor/jquery/jquery-ui.min.js"></script>
+<script src="./vendor/jquery/jquery-ui.min.js"></script>
 <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 <!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
 <!--<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>-->

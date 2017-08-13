@@ -54,7 +54,7 @@
 
             return $http.get(url)
                 .then(function (response) {
-                    return respnse.data;
+                    return response.data;
                 });
         }
 

@@ -5,13 +5,14 @@
 
     function requestController($location, requestService, currentUser) {
 
+        var model = this;
+
         model.user = currentUser;
 
         var clientId = '186029965139-lr46un71h6cuc737mtl24ge5mdemanbo.apps.googleusercontent.com';
         var apiKey = 'AIzaSyDP6KgQl4e92qhOHGG2FvyXgy5I_sxU-3E';
         var scopes = 'https://www.googleapis.com/auth/calendar';
 
-        var model = this;
         model.requestoDB = requestoDB;
         model.handleAuthClick = handleAuthClick;
 

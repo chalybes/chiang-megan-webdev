@@ -2,10 +2,10 @@ var app = require('../../../express.js');
 var murineModel = require('./models/murine.model.server');
 
 app.get('/api/allines', findAllLines);
-app.get('/api/findLine/:lineId', findLineById);
-app.post('/api/newLine', createLine);
-app.put('/api/updateLine/:lineId', updateLine);
-app.delete('/api/killine/:lineId', deleteLine);
+app.get('/api/findLine/:lineId', isAdmin, findLineById);
+app.post('/api/newLine', isAdmin, createLine);
+app.put('/api/updateLine/:lineId', isAdmin, updateLine);
+app.delete('/api/killine/:lineId', isAdmin, deleteLine);
 
 function createLine(req, res) {
     var line = req.body;
@@ -50,6 +50,22 @@ function findLineById(req, res) {
         .then(function (line) {
             res.json(line);
         });
+}
+
+function isAdmin(req, res, next) {
+    if (req.isAuthenticated() && req.user.role.indexOf('ADMIN') > -1) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+function checkAdmin(req, res) {
+    if (req.isAuthenticated() && req.user.role.indexOf('ADMIN') > -1) {
+        res.json(req.user);
+    } else {
+        res.send('0');
+    }
 }
 
 

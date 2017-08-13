@@ -1,0 +1,8 @@
+<div class="container-fluid">
+    <h1>Admin's Page for All User Comments</h1>
+    <ul class="list-group">
+        <li ng-repeat="entry in model.comments" class="list-group-item">
+            {{entry.title}} :  {{entry.comment}}
+        </li>
+    </ul>
+</div>

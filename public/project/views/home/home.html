@@ -12,8 +12,8 @@
         <li><a href="#!/listOfLines">See what is available</a></li>
         <li><a href="#!/listOfRequests">Check the Request Queue</a></li>
         <li ng-if="model.user._id"><a href="#!/request">Make a Request</a></li>
-        <!--<li><a href="#!/request">Make a Request</a></li>-->
-
+        <li ng-if="model.user._id"><a href="#!/profile">Profile</a></li>
+        <li ng-if="model.user.role.indexOf('ADMIN') > -1"><a href="#!/adminCommandCenter">Admin Command Center</a></li>
     </ul>
 </div>
 </body>

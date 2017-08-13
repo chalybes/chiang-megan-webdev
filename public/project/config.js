@@ -22,8 +22,10 @@
                 controllerAs: 'model'
             })
             .when('/profile', {
-                templateUrl: 'views/profile/profile.html'
-
+                templateUrl: 'views/profile/profile.html',
+                controller: 'profileController',
+                controllerAs: 'model',
+                resolve: {currentUser: checkLoggedIn}
             })
             .when('/listOfLines', {
                 templateUrl: 'views/linesList/listOfLines.html',
@@ -52,7 +54,20 @@
             .when('/editRequest/:orderId', {
                 templateUrl: 'views/editRequests/editRequests.html',
                 controller: 'editRequestsController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {currentUser: checkAdmin}
+            })
+            .when('/adminCommandCenter', {
+                templateUrl: 'views/adminCommand/adminCommand.html',
+                controller: 'adminCommandController',
+                controllerAs: 'model',
+                resolve: {currentUser: checkAdmin}
+            })
+            .when('/:userId/adminCommentsView', {
+                templateUrl: 'views/adminCommand/adminCommentsView.html',
+                controller: 'adminCommentsViewController',
+                controllerAs: 'model',
+                resolve: {currentUser: checkAdmin}
             });
 
         function checkCurrentUser($q, $location, muserService) {

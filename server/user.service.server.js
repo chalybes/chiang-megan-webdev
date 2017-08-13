@@ -1,6 +1,6 @@
 var app = require('../express');
 var passport = require('passport');
-var LocalStrategy = require('passport-local');
+var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
@@ -61,7 +61,7 @@ app.get('/auth/google/callback',
         failureRedirect: '/assignment/index.html#!/login'
     }));
 
-passport.use(new LocalStrategy(localStrategy)); //tells passport to use LocalStrategy and where LocalStrategy is configured
+passport.use("assignmentLocal",new LocalStrategy(localStrategy)); //tells passport to use LocalStrategy and where LocalStrategy is configured
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
@@ -75,7 +75,7 @@ app.put('/api/assignment/user/:userId', updateUser);
 app.delete('/api/assignment/user/:userId', isAdmin, deleteUser);
 app.delete('/api/assignment/unregister', unregister);
 
-app.post  ('/api/assignment/login', passport.authenticate('local'), login);
+app.post  ('/api/assignment/login', passport.authenticate('assignmentLocal'), login);
 app.get   ('/api/checkAdmin', checkAdmin);
 app.get   ('/api/checkLoggedIn', checkLoggedIn);
 app.post  ('/api/assignment/register', register);

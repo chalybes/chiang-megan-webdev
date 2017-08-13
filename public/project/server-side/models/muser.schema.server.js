@@ -12,6 +12,7 @@ var muserSchema = mongoose.Schema({
         },
         email: String,
         role: [{type: String, enum: ['USER', 'ADMIN']}],
+        comments: [{type: mongoose.Schema.Types.ObjectId, ref: "commentsModel"}],
         dateCreated: {type: Date, default: Date.now}},
         {collection: "muser"});
 

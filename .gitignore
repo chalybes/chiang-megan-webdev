@@ -2,3 +2,5 @@ node_modules
 .idea
 client_secret.json
 env.js
+assignmentAuth_client_id.json
+
