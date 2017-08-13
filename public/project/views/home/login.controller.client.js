@@ -7,22 +7,9 @@
 
         var model = this;
 
-        // model.login = login;
-
-        // function login(username, password) {
-        //     muserService.login(username, password)
-        //         .then(function (response) {
-        //             var user = response.data;
-        //             $location.url('/request');
-        //         });
-        // }
-
         model.login = function (username, password) {
 
-            // var found = userService.findUserByCredentials(username, password);
-
             muserService
-            //.findUserByCredentials(username, password)
                 .login(username, password)
                 .then(login, handleError);
 

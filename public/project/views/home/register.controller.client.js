@@ -16,7 +16,7 @@
                 return;
             }
 
-            var user = null; //userService.findUserByUsername(username);
+            var user = null;
 
             if (user !== null) {
                 model.error = "Username is not available";

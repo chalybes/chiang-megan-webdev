@@ -4,7 +4,6 @@
         .controller('homeController', homeController);
 
     function homeController(currentUser, $location, muserService) {
-        // function homeController() {
 
         var model = this;
 
@@ -15,8 +14,7 @@
         function logout() {
             muserService.logout()
                 .then(function () {
-                    // $location.url('/login');
-                    $location.url('/');
+                    $location.url('/login');
                 });
         }
     }

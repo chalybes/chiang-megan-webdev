@@ -49,7 +49,6 @@
         function logout() {
             muserService.logout()
                 .then(function () {
-                    // $location.url('/login');
                     $location.url('/');
                 });
         }

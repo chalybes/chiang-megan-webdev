@@ -11,9 +11,8 @@
         model.updateLine = updateLine;
         model.deleteLine = deleteLine;
 
-        // var lineId = model.line._id;
-
         function init() {
+
             // murineService.findAllLines()
             //     .then(function (lines) {
             //         model.lines = lines;
